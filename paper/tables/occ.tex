@@ -1,0 +1,22 @@
+\begin{table}[htbp]\centering\small
+\caption{\ifzh 已发表、复现及排列校正的动态占域估计。受控重拟合仅改变观测协变量对齐（第~\ref{sec:ordering}节）；校正不确定性见表~\ref{tab:occintervals}。\else Published, reproduced and ordering-corrected dynamic occupancy estimates. The controlled refit changes only observation-covariate alignment (Section~\ref{sec:ordering}). Corrected uncertainty is summarized in Table~\ref{tab:occintervals}.\fi}\label{tab:occ}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llrrrrrr}\toprule
+& & \multicolumn{2}{c}{Published} & \multicolumn{2}{c}{Authors' script (ours)} & \multicolumn{2}{c}{Corrected order} \\ \cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Comp. & Parameter & est. & SE & est. & SE & est. & $p$ \\ \midrule
+$\psi$ & (Intercept) & -1.637 & 0.171 & -1.6365 & 0.1710 & -1.6287 & 1.06e-17 \\
+$\psi$ & Elevation & 1.544 & 0.238 & 1.5436 & 0.2379 & 1.6466 & 7.59e-10 \\
+$\psi$ & NDVI & 0.613 & 0.177 & 0.6127 & 0.1766 & 0.5825 & 0.00115 \\
+$\gamma$ & (Intercept) & -2.701 & 0.172 & -2.7014 & 0.1723 & -2.8155 & 4.96e-56 \\
+$\gamma$ & NDVI & 0.074 & 0.170 & 0.0737 & 0.1704 & 0.0566 & 0.74 \\
+$\varepsilon$ & (Intercept) & -0.177 & 0.306 & -0.1768 & 0.3062 & -0.0905 & 0.763 \\
+$\varepsilon$ & Elevation & -0.830 & 0.296 & -0.8299 & 0.2963 & -0.7197 & 0.00254 \\
+$\varepsilon$ & NDVI & -0.840 & 0.337 & -0.8400 & 0.3372 & -0.8185 & 0.00884 \\
+$p$ & (Intercept) & -0.736 & 0.119 & -0.7364 & 0.1191 & -0.7780 & 7.57e-12 \\
+$p$ & PeriodPost-Fiona & 0.120 & 0.146 & 0.1200 & 0.1460 & 0.1066 & 0.474 \\
+$p$ & PeriodPre-Maria & -0.566 & 0.190 & -0.5661 & 0.1904 & -0.0553 & 0.727 \\
+\midrule
+\multicolumn{2}{l}{AIC} & \multicolumn{2}{c}{2878.81} & \multicolumn{2}{c}{2878.8085} & \multicolumn{2}{c}{2892.1042} \\
+\bottomrule\end{tabular}
+\end{adjustbox}
+\end{table}

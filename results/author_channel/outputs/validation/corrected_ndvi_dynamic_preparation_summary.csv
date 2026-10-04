@@ -1,0 +1,11 @@
+metric,value
+Sites represented in all three periods,1048
+Sites lacking corrected NDVI,4
+Final sites with complete covariates,1044
+Primary periods,3
+Maximum secondary occasions per period,3
+Detection-history columns,9
+Observed survey occasions,7908
+Missing survey occasions,1488
+Observation-covariate rows,9396
+Detection reference period,Inter-Hurricanes

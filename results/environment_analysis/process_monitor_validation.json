@@ -1,0 +1,10 @@
+{
+  "occupancy_sites": 1044,
+  "complete_nine_visit_sites": 483,
+  "oof_n": 68976,
+  "oof_reports": 3370,
+  "selected_each_policy": 6890,
+  "policy_budgets_equal_all_folds": true,
+  "covariance_draws": 2000,
+  "bootstrap_replicates": 1000
+}

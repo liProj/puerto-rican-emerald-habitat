@@ -1,0 +1,29 @@
+\subsection{\ifzh 低地报告识别的改善为占域监测提供复访线索\else Better identification of lowland reports guides revisits for occupancy monitoring\fi}
+\par
+\ifzh
+低地是检验报告回升与占域持续性关系的重要环境。其报告率只有 3.3\%，却包含完整样本中 60.7\% 的正报告；同时，低海拔低、高绿度地点的模型估计的占域持续概率分别为 24.2\% 和 71.3\%。低报告率因而掩盖了低地内部占域持续概率的差异。新增十折实验显示，随机森林将低海拔 AP 从 m4 的 0.143 提高至 0.201，中海拔从 0.221 提高至 0.326，高海拔则由 0.540 变为 0.538（表~\ref{tab:envmonitor}；图~\ref{fig:envmonitor}）。预测改善主要补充了低、中海拔稀少报告的识别，能够为从既有记录中选择复访候选地点提供依据。较高占域持续概率集中于山地和较绿地点，而较大预测收益集中于低、中海拔，两者为监测提供互补信息。
+\else
+Lowlands are important for testing the connection between reporting rebound and occupancy persistence. Their reporting rate was only 3.3\%, yet they contained 60.7\% of complete-sample positive reports, while modeled persistence was 24.2\% and 71.3\% in low- and high-greenness lowland cells. Low aggregate reporting therefore conceals differences in occupancy persistence probabilities within lowlands. In the new ten-fold experiment, random forest increased low-elevation AP from m4's 0.143 to 0.201 and middle-elevation AP from 0.221 to 0.326; high-elevation AP changed from 0.540 to 0.538 (Table~\ref{tab:envmonitor}; Figure~\ref{fig:envmonitor}). Prediction gains chiefly improve identification of sparse low- and middle-elevation reports, providing a basis for selecting candidate revisit locations from existing records. Higher modeled persistence concentrates in uplands and greener sites, whereas larger predictive gains concentrate at low and middle elevations; these patterns supply complementary monitoring information.
+\fi
+\inctab{environment_monitoring}
+\par
+\ifzh
+全局前 10\% 排序中，随机森林覆盖低海拔正报告的 34.6\%，高于 m4 的 26.4\%，差值为 8.1 个百分点，空间区块自助区间为 2.8--12.0。识别出更多低地报告，有助于扩大后续重复调查的候选范围，进而比较不同绿度地点的再次记录比例，并在考虑不完全探测后估计占域持续概率。报告识别与持续性估计需要分步完成。这些清单排序结果没有估计复访后的占域状态及其转移。高海拔正报告覆盖同时由 78.3\% 降至 72.3\%，差值为 $-6.0$ 个百分点，区间为 $[-17.2,-0.9]$。模型更换因此提高了低地报告识别，却减弱了对山地报告的覆盖；保留固定山地重复点，能够避免这一排序变化削弱对高持续性环境的长期跟踪。
+\else
+Under global top-decile ranking, random forest captured 34.6\% of low-elevation positives versus 26.4\% for m4, an 8.1-point gain with spatial block bootstrap interval 2.8--12.0. Identifying additional lowland reports expands the candidate pool for repeated surveys that can compare repeat-report proportions across greenness conditions and estimate occupancy persistence after accounting for imperfect detection. Report identification and persistence estimation require separate steps. Checklist ranking does not measure occupancy after a revisit. High-elevation positive coverage simultaneously declined from 78.3\% to 72.3\%, a $-6.0$-point contrast with interval $[-17.2,-0.9]$. Changing models therefore improved lowland identification while reducing upland report coverage. Retaining fixed upland repeat sites would prevent this ranking shift from weakening longitudinal coverage of environments with high modeled persistence.
+\fi
+\begin{figure}[htbp]\centering
+\incfig{fig28_environment_monitoring}
+\caption{\ifzh
+预测增益与监测覆盖。（a）各海拔层的 AP；（b）随机森林两种等预算方案的层内入选比例；（c）层内正报告覆盖。两方案各选 6,890 条清单。
+\else
+Prediction gains and monitoring coverage. Panels show (a) AP by elevation, (b) within-band selection under two equal-budget random-forest policies, and (c) within-band positive-report coverage. Each policy selects 6,890 checklists.
+\fi}\label{fig:envmonitor}
+\end{figure}
+\par
+\ifzh
+等预算比较进一步说明监测目标如何改变环境覆盖。全局随机森林排序选中低、中、高海拔清单的 6.9\%、29.7\% 和 57.9\%，将筛查名额明显集中于高报告率环境。各海拔层约选 10\% 后，低地正报告覆盖由 34.6\% 提高至 45.6\%，增加 11.0 个百分点（95\% 区间 7.4--15.5）；总体覆盖由 46.7\% 降至 35.2\%，少覆盖 388 条正报告。增加低地代表性，为比较报告回升不足与占域持续性提供了更广的记录基础，但也降低了相同筛查名额下的总体命中。用于环境差异研究时，可将固定山地复访与低地分层覆盖结合，在各层内借助模型排序选择候选地点；低地内部还应保留不同绿度的对照。当前实验量化的是按海拔分层的清单覆盖，绿度分层和实际野外成本需要在具体调查设计中另行安排。这里的合并覆盖率来自一次十折实验，与前述 30 折不加权平均分别报告。
+\else
+The equal-budget comparison shows how the monitoring objective changes environmental coverage. Global random-forest ranking selected 6.9\%, 29.7\% and 57.9\% of low-, middle- and high-elevation checklists, concentrating screening slots in high-reporting environments. Selecting approximately 10\% within each elevation band increased lowland positive coverage from 34.6\% to 45.6\%, an 11.0-point gain (95\% interval 7.4--15.5), while reducing overall coverage from 46.7\% to 35.2\%, or 388 fewer positive reports. Wider lowland representation supplies a broader record base for comparing incomplete reporting rebound with occupancy persistence, but reduces aggregate hits under the same screening budget. Environmental monitoring can combine fixed upland revisits with lowland coverage and use within-stratum ranking to identify candidate sites, retaining contrasting greenness conditions within lowlands. The experiment quantifies checklist coverage under elevation stratification; greenness allocation and actual field costs require a separate survey design. These pooled rates come from a single ten-fold experiment and are reported separately from the earlier unweighted 30-fold averages.
+\fi
+\FloatBarrier

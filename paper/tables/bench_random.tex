@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{\ifzh
+随机验证的预测表现。HERON-plus 为 10 折，其余配置为 15 折。
+\else
+Predictive performance under random validation: ten folds for HERON-plus and 15 for the other configurations.
+\fi}\label{tab:bench_random}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrrr}\toprule
+Method & AUC & AP & pseudo-$R^2$ & Tjur $R^2$ & Brier & LogLoss & ECE & Recall at 10pct \\
+& $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $\downarrow$ & $\downarrow$ & $\uparrow$ \\ \midrule
+GLM-m3 (published) & 0.8204 & 0.2989 & 0.2059 & 0.1521 & 0.0397 & 0.1550 & 0.0055 & 0.5072 \\
+GLM-m4 (published)\,$\ddagger$ & 0.8204 & 0.2987 & 0.2060 & 0.1518 & 0.0397 & 0.1549 & 0.0058 & 0.5076 \\
+GLM-splines & 0.8365 & 0.3237 & 0.2348 & 0.1652 & 0.0385 & 0.1493 & 0.0063 & 0.5515 \\
+GLM-m4 + terrain & 0.8503 & 0.3258 & 0.2440 & 0.1789 & 0.0386 & 0.1475 & 0.0054 & 0.5554 \\
+RandomForest & 0.9102 & 0.4423 & 0.3535 & 0.2458 & 0.0344 & 0.1262 & 0.0055 & 0.6671 \\
+MLP & 0.8540 & 0.3084 & 0.0452 & 0.2648 & 0.0432 & 0.1863 & 0.0280 & 0.5500 \\
+MLP + terrain & 0.8511 & 0.3065 & -0.4301 & 0.3003 & 0.0477 & 0.2791 & 0.0402 & 0.5629 \\
+LightGBM & 0.9066 & 0.4250 & 0.3225 & 0.2709 & 0.0355 & 0.1322 & 0.0113 & 0.6487 \\
+LightGBM + terrain & 0.9090 & 0.4297 & 0.3117 & 0.2813 & 0.0357 & 0.1343 & 0.0142 & 0.6504 \\
+XGBoost & 0.9088 & 0.4311 & 0.3492 & 0.2658 & 0.0348 & 0.1270 & 0.0050 & 0.6561 \\
+XGBoost + terrain & 0.9121 & 0.4431 & 0.3544 & 0.2799 & 0.0346 & 0.1260 & 0.0065 & 0.6674 \\
+HERON-NN & 0.8328 & 0.3192 & 0.2294 & 0.1678 & 0.0386 & 0.1504 & 0.0066 & 0.5474 \\
+HERON & 0.9106 & 0.4308 & 0.3477 & 0.2397 & 0.0348 & 0.1273 & 0.0072 & 0.6568 \\
+\textbf{HERON-plus} & 0.9362 & 0.4882 & 0.3900 & 0.2905 & 0.0330 & 0.1190 & 0.0149 & 0.7135 \\
+\bottomrule\end{tabular}
+\end{adjustbox}
+\\[2pt]\footnotesize $\ddagger$ the model published by \cite{ortiz2026}.
+\end{table}

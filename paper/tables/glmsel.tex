@@ -1,0 +1,12 @@
+\begin{table}[htbp]\centering\small
+\caption{\ifzh 相同 68,976 份 NDVI 完整清单上的 GLM 候选模型复现。AIC 评价这一拟合候选集，不代表地理预测表现。\else Reproduced candidate GLMs on the same 68,976 NDVI-complete checklists. AIC concerns this fitted candidate set, not geographic predictive performance.\fi}\label{tab:glmsel}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lp{5.7cm}rrrrr}\toprule
+Model & Structure & $k$ & AIC & $\Delta$AIC & $w$ & pseudo-$R^2$ \\ \midrule
+\texttt{m4} & \scriptsize\texttt{Period * Elev + NDVI + Dur + Dist} & 9 & 21373.31 & 0.00 & 0.776 & 0.2067 \\
+\texttt{m3} & \scriptsize\texttt{Period + Elev + NDVI + Dur + Dist} & 7 & 21375.80 & 2.49 & 0.224 & 0.2065 \\
+\texttt{m2} & \scriptsize\texttt{Period + Dur + Dist} & 5 & 25077.56 & 3704.25 & 0.000 & 0.0688 \\
+\texttt{m1} & \scriptsize\texttt{Period} & 3 & 26796.82 & 5423.51 & 0.000 & 0.0048 \\
+\texttt{m0} & \scriptsize\texttt{1} & 1 & 26921.62 & 5548.31 & 0.000 & 0.0000 \\
+\bottomrule\end{tabular}
+\end{adjustbox}\end{table}

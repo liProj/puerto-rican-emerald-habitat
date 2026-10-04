@@ -1,0 +1,5 @@
+model,initial_occupancy,colonization,local_extinction,detection,K
+Final,Elevation + NDVI,NDVI,Elevation + NDVI,Period,11
+Environmental,Elevation + NDVI,NDVI,NDVI,Period,10
+Elevation_only,ElevationZone,Intercept only,Intercept only,Period,7
+Null,Intercept only,Intercept only,Intercept only,Intercept only,4

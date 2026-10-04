@@ -1,0 +1,5 @@
+Site_ID,Grid_Longitude,Grid_Latitude,mean_elevation_m,mean_NDVI_corrected,number_of_checklists,number_with_corrected_NDVI,proportion_with_corrected_NDVI
+-66.49_18.05,-66.49,18.05,73.33333333333333,NA,3,0,0
+-66.62_18.25,-66.62,18.25,895.6666666666666,NA,3,0,0
+-66.62_18.44,-66.62,18.44,44.666666666666664,NA,3,0,0
+-66.93_18.4,-66.93,18.4,187,NA,3,0,0

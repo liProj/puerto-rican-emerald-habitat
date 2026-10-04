@@ -1,0 +1,41 @@
+\section{Results}
+\subsection{Reporting rebounded partially across hurricane-related periods}
+Of \nChecklists{} checklists, \nDetections{} reported the species, an overall rate of \nEncounterPct{}\%. Reporting declined from 7.59\% before Mar\'ia to 4.62\% between hurricanes, then increased to 6.21\% after Fiona (Table~\ref{tab:periods}; Figure~\ref{fig:rates}). The later increase therefore did not restore the aggregate initial rate. Annual summaries show a low of 3.80\% in 2019 and 6.62\% in 2025. The period-level rate recovered by 1.59 percentage points but remained 1.38 points below the initial value, indicating a partial rebound following the decline. This aggregate change raises the environmental question of whether rebound is widespread across previously reporting sites or concentrated in particular elevation and greenness combinations. The stratified comparisons below locate the pattern before site-transition results examine its persistence interpretation.
+\inctab{periods_rewrite}
+\begin{figure}[htbp]\centering
+\incfig{fig03_encounter_rates}
+\caption{Observed annual and period-level reporting rates from the released records. Fractions printed above the period bars give positive reports divided by all checklists. Annual intervals are the original binomial intervals and do not account for dependence among checklists.}\label{fig:rates}
+\end{figure}
+
+\input{env_missing_results.tex}
+
+\subsection{The period contrast has an elevation structure}
+The reproduced interaction GLM m4 had AIC \aicMfour{}, model weight \wMfour{} and pseudo-$R^2$ \pseudoRMfour{} (Table~\ref{tab:glmsel}). The additive environmental model m3 remained competitive ($\Delta$AIC 2.49), whereas adding environment to the period-and-effort model reduced AIC by 3704.25. Environmental gradients account for substantial fitted variation within this candidate set; the additional evidence for the period--elevation interaction is more limited. Environmental baselines are therefore central to explaining report distributions, whereas locating stronger rebound requires within-environment period contrasts. Persistently high reporting at greater elevation does not itself establish faster recovery.
+\inctab{glmsel}
+
+At fixed covariates, reporting probability at 100~m was 3.77\%, 2.40\% and 3.08\% across the three periods. At 900~m it was 40.58\%, 36.52\% and 44.89\%. Post-Fiona predictions therefore remained below the initial baseline at low elevation while exceeding it at high elevation (Figure~\ref{fig:gradients}). These conditional comparisons and the aggregate incomplete rebound describe different quantities and can hold simultaneously. The odds ratios per 100~m were 1.430, 1.483 and 1.500. With the original model-based standard errors, the Post-Fiona interaction had $p=0.011$; the Inter-Hurricanes interaction had $p=0.063$.
+
+NDVI was positively associated with reporting ($\beta=0.871$, SE 0.087). An increase of 0.1 NDVI corresponded to an odds ratio of approximately 1.091 (95\% Wald interval 1.073--1.110). The probability-weighted elevation centroid shifted by +28.53~m between hurricanes and +13.88~m after Fiona relative to the initial period. These shifts summarize reweighting of the fitted elevation curve, not individual displacement. The within-Post-Fiona linear time term did not reach the 0.05 level ($p=0.121$). Period means and annual trends describe different temporal scales; rebound here denotes the increase between period-level reporting rates.
+\begin{figure}[htbp]\centering
+\incfig{fig21_reporting_gradients_rewrite}
+\caption{Environmental structure of the reproduced reporting pattern. (a) GLM predictions with NDVI, duration and distance fixed at their complete-sample means. (b) Probability-weighted centroid shifts on the uniform 0--1300~m prediction grid. Curves are fitted reporting responses; centroid shifts do not measure movement.}\label{fig:gradients}
+\end{figure}
+\FloatBarrier
+
+\input{env_rebound_results.tex}
+
+\subsection{Persistence associations remain after observation-model correction}
+The ordering refit converged and changed AIC from \aicOccPub{} to \aicOccFix{}. Realigning period labels to the visits at each site changed the fitted observation process. Within the corrected model, initial occupancy remained positively associated with elevation ($\beta=1.647$) and NDVI ($\beta=0.583$), while local extinction remained negatively associated with elevation ($\beta=-0.720$) and NDVI ($\beta=-0.818$). Their approximate 95\% intervals excluded zero (Table~\ref{tab:occintervals}). Thus the environmental association with persistence survives this specific implementation correction.
+\inctab{occupancy_intervals}
+\inctab{occ}
+
+The detection contrast changed more substantially. The Pre-Mar\'ia coefficient relative to Inter-Hurricanes changed from $-0.566$ (SE 0.190, $p=0.0029$) to $-0.055$ (SE 0.159, $p=0.727$). Corrected detection probabilities were 30.3\%, 31.5\% and 33.8\% across the three periods, with neither period contrast clearly separated from zero (Figure~\ref{fig:ordering}). The absolute initial-period coefficient shrank by approximately 90\%, and the corrected probabilities spanned 3.5 percentage points. The initial detection contrast was consequently sensitive to label ordering, while environmental persistence associations remained stable. Full published, reproduced and corrected coefficients are retained in Table~\ref{tab:occ}.
+
+The NDVI colonization coefficient was close to zero ($\beta=0.057$, 95\% interval $[-0.278,0.392]$). Evidence linking greenness to occupancy persistence is therefore clearer than evidence linking it to entry into unoccupied sites. This strengthens the interpretation linking high reporting in greener environments to retention of occupied sites, while providing less support for attributing rebound to greenness-associated colonization. Within this model, greenness primarily characterized retention of occupied sites, whereas a single greenness gradient explained entry into occupancy weakly. Monitoring should retain detections and nondetections from each visit to estimate occupancy persistence and colonization probabilities separately.
+\begin{figure}[htbp]\centering
+\incfig{fig16_occupancy_obscovs_ordering}
+\caption{Effect of correcting period-label alignment in the selected dynamic occupancy model. The archived coefficient plot uses one-SE error bars; Table~\ref{tab:occintervals} gives 95\% intervals. Detection probabilities follow the panel's displayed period order. Environmental and detection coefficients differ in their sensitivity to observation-order correction.}\label{fig:ordering}
+\end{figure}
+\FloatBarrier
+
+\input{env_persistence_results.tex}

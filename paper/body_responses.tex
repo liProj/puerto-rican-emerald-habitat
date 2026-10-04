@@ -1,0 +1,77 @@
+\subsection{\ifzh 努力响应、环境曲线与海拔质心揭示模型的拟合结构\else Effort responses, environmental curves and centroids reveal fitted structure\fi}
+\label{sec:responses}
+\ifzh
+努力分支得分随调查时长从 5 分钟增至 240 分钟而由 0.286 增至 0.588，随距离从 0 增至 5~km 而由 0.316 增至 0.533（图~\ref{fig:eff}）。这使同一环境条件下投入较多观察努力的清单获得较高报告预测，显示努力标准化在时期比较中的必要性。曲线方向由单调约束规定，拟合决定其斜率和弯曲程度；因此，该图用于解释报告得分如何随努力量调整。若低地与山地或前后时期的访问时长不同，未经努力统一的报告差异就可能被放大或减弱。复访应保持可比较的调查时长和距离，并保留未报告访问，并结合探测模型，才能检验报告增加是否伴随较高的占域持续概率。
+\else
+The effort-branch score increased from 0.286 to 0.588 as duration rose from 5 to 240 minutes, and from 0.316 to 0.533 as distance rose from 0 to 5~km (Figure~\ref{fig:eff}). Under otherwise fixed conditions, more observation effort therefore yields a higher report prediction. This illustrates the role of effort standardization in period comparisons. Monotonic constraints set the response direction, while fitting determines slope and curvature; the curves explain how effort adjusts the reporting score. Differences in visit duration across elevations or periods could amplify or weaken unstandardized reporting contrasts. Comparable duration and distance, together with retained nonreporting visits, allow repeat surveys and detection models to test whether increased reporting accompanies higher occupancy persistence.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig11_detection_effort_curve}
+\caption{\ifzh
+神经模型的努力分支响应。其他输入固定，单调约束规定得分随时长和距离非递减。
+\else
+Effort-branch responses with other inputs fixed. Monotonic constraints require nondecreasing scores with duration and distance.
+\fi}\label{fig:eff}
+\end{figure}
+\ifzh
+海拔响应呈明显非线性。神经环境分支在较高海拔接近饱和，GLM 的线性 logit 响应则持续增加（图~\ref{fig:pd}）。NDVI 分支呈单峰形状，三个时期的报告响应峰值分别位于约 0.53、0.47 和 0.51，表明灵活拟合将最高绿度与最高得分分离。该形状与 GLM 的平均正关联共同说明，整体梯度与局部曲率是不同的描述层次；神经单峰响应提供了检查高绿度范围样本覆盖及条件组合的具体线索。对监测布点，这种模型间差异支持同时保留中、高绿度地点，以检验报告曲率是否在重复调查中出现。当前神经训练暴露及分支得分定义削弱了把峰值解释为最适持续性绿度的依据，因此不宜据此减少高绿度地点的复访。
+\else
+Elevation responses were nonlinear. The neural environmental branch approached saturation at higher elevations, whereas the GLM's linear-logit response continued rising (Figure~\ref{fig:pd}). The NDVI response was unimodal, with reporting-response peaks near 0.53, 0.47 and 0.51 across the three periods. Flexible fitting thus separated the greenest conditions from the highest fitted score. Together with the GLM's average positive association, these curves distinguish an overall gradient from local curvature and identify high-greenness sample coverage and covariate combinations as relevant checks on the fitted peak. For survey placement, this model disagreement supports retaining both intermediate- and high-greenness sites to test whether the reporting curvature appears in repeat observations. Training exposure and the branch-score definition weaken an interpretation of the peak as optimal greenness for persistence, providing no basis to reduce revisits in the greenest environments.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig12_psi_partial_dependence}
+\caption{\ifzh
+GLM 报告曲线与神经模型的报告、环境分支响应。实线表示神经拟合，虚线表示 GLM；分支得分采用条件输入绘制。
+\else
+GLM reporting curves and neural reporting and environmental-branch responses. Solid lines denote neural fits and dashed lines denote the GLM; branch scores use fixed conditional inputs.
+\fi}\label{fig:pd}
+\end{figure}
+\ifzh
+这种曲线形状差异解释了绝对海拔质心的差别（图~\ref{fig:cent}）。GLM 的三个时期质心为 939.7、968.2 和 953.5~m，神经报告曲线为 797.8、838.7 和 817.4~m。高海拔饱和降低了神经曲线对预测网格上端的相对权重，因此其绝对质心更低。两个模型的海拔质心均先升高，随后部分回落。GLM 相对初期的位移为 +28.5 和 +13.9~m，神经模型为 +40.9 和 +19.6~m。这一共同次序概括了报告权重的时期重分配，且位移幅度对响应函数形状敏感。时期比较因此需要同时覆盖低地和山地。只跟踪高海拔高报告地点，会遗漏后期报告权重向较低海拔回落所涉及的变化。两条曲线来自共享观测，不能把共同次序当作独立验证；同地点的探测历史与状态转移模型才有助于检验这种重分配是否伴随低地占域状态的维持。
+\else
+Response shape explains the different absolute elevation centroids (Figure~\ref{fig:cent}). GLM centroids were 939.7, 968.2 and 953.5~m, versus 797.8, 838.7 and 817.4~m for the neural reporting curve. High-elevation saturation reduced the neural curve's relative weight at the upper end of the prediction grid, lowering its absolute centroid. Both models showed an upward centroid shift between hurricanes followed by a partial return. Shifts relative to the initial period were +28.5 and +13.9~m for the GLM, and +40.9 and +19.6~m for the neural model. This shared ordering summarizes period-specific redistribution of fitted reporting weights, while its magnitude depends on response shape. Period comparisons therefore require both lowland and upland coverage. Tracking only high-reporting upland locations could miss record changes associated with the later downward reweighting. The curves share observations and their common ordering is not independent validation; same-site detection histories and transition models can test whether the redistribution accompanies persistent lowland occupancy.
+\fi
+\begin{figure}[htbp]\centering\incfig[0.74\linewidth]{fig13_elevational_centroid}
+\caption{\ifzh
+0--1300~m 预测网格上的概率加权海拔质心。标注为各模型相对自身初期基线的位移。
+\else
+Probability-weighted elevation centroids on the 0--1300~m prediction grid. Annotations show shifts relative to each model's own initial baseline.
+\fi}\label{fig:cent}
+\end{figure}
+\FloatBarrier
+\subsection{\ifzh 空间异质性与变量贡献对应不同监测信息\else Spatial heterogeneity and variable contributions inform monitoring\fi}
+\ifzh
+复现的原占域模型中，在平均绿度下局地灭绝预测从近海平面的 56.7\% 降至约 1300~m 的 0.9\%（图~\ref{fig:ext}）。高海拔端区间较宽，表明极端环境条件下的幅度估计受样本信息限制；观测排列校正后的海拔系数仍为负值，与这一梯度方向一致。神经环境分支补数也随海拔下降，但它在数学上只是低环境得分的表达。两个面板分别展示地点转移估计与条件得分变化，持续性解释来自动态占域模型的转移分量。海拔梯度因而为固定山地复访提供了过程依据，而低地较高的转移风险使低地绿度对照更有必要。结合校正后低地高绿度地点较高的占域持续概率，应检验哪些低地条件与较高的占域持续概率相关，避免把整个低地统一解释为高流失环境。
+\else
+In the reproduced original occupancy model, predicted local extinction at mean greenness declined from 56.7\% near sea level to 0.9\% at approximately 1300~m (Figure~\ref{fig:ext}). The broad upper-elevation interval indicates limited information about the magnitude at environmental extremes. The negative elevation coefficient after observation-order correction retained the same gradient direction. The complement of the neural environmental branch also declined with elevation, but mathematically expresses a low environmental score. The panels thus show a site-transition estimate and a conditional score response; the persistence interpretation derives from the dynamic model's transition component. The elevation gradient supplies a process-based rationale for fixed upland revisits, while higher modeled lowland transition risk motivates lowland greenness contrasts. Together with higher corrected persistence at greener lowland sites, it supports testing which lowland conditions are associated with higher occupancy persistence probabilities rather than treating all lowlands as high-loss environments.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig14_extinction_vs_elevation}
+\caption{\ifzh
+海拔梯度上的两种模型输出。（a）复现的原动态占域模型局地灭绝概率及区间；（b）一减神经环境分支得分。
+\else
+Two model outputs along elevation. (a) Reproduced original dynamic-model local extinction probability and interval; (b) one minus the neural environmental-branch score.
+\fi}\label{fig:ext}
+\end{figure}
+\ifzh
+地点地图把上述梯度转换为监测布点信息（图~\ref{fig:surf}）。占域网格的转移预测与 3,727 个采样地点的神经得分都呈现空间异质性，而地点分布并不均匀。地图适合识别已有观测范围内的高低得分对照和采样空缺，支持同时覆盖山地与低地的分层布点。神经地图采用地点跨时期平均 NDVI，因此表达的是固定地点环境条件下的时期得分，植被随时间恢复的过程应由同步遥感与重复鸟类调查另行测量。可根据地图选择不同环境中的复访地点。在山地较高占域持续概率的网格中安排重复调查，低地不同绿度地点则用于检验报告回升不足是否与较高的占域持续概率并存，观测空缺则提示需要补充覆盖。具体候选点仍需核查可达性和调查条件，地图得分本身不构成地点恢复的证据。
+\else
+Site maps translate these gradients into monitoring-placement information (Figure~\ref{fig:surf}). Transition predictions at occupancy grids and neural scores at 3,727 sampled sites both vary spatially, while observation locations are unevenly distributed. The maps identify score contrasts and sampling gaps within the observed domain, supporting strata that include both upland and lowland settings. The neural map uses cross-period mean site NDVI and therefore expresses period scores under fixed site conditions; time-varying vegetation recovery requires concurrent remote-sensing and repeated bird observations. The maps can guide selection of revisit sites across environments. Repeat surveys in upland grids with high modeled occupancy persistence can track occupancy transitions, while lowland greenness contrasts can test whether incomplete reporting rebound coexists with high occupancy persistence, and observation gaps identify coverage needs. Candidate locations still require assessment of access and survey conditions; mapped scores themselves do not demonstrate site recovery.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig15_spatial_surfaces}
+\caption{\ifzh
+地点尺度的空间异质性。上图为复现的原动态模型局地灭绝预测，下图为 Fiona 后采样地点的神经环境分支得分。
+\else
+Site-level spatial heterogeneity. The upper panel shows reproduced original dynamic-model local extinction predictions. The lower panel shows neural environmental-branch scores at sampled sites in the Post-Fiona period.
+\fi}\label{fig:surf}
+\end{figure}
+\ifzh
+置换重要性揭示两种模型依赖的信息不同（图~\ref{fig:imp}）。神经环境分支中，打乱海拔使 AP 下降 0.0809，远大于打乱绿度的 0.0075，表明该分支主要沿海拔组织拟合得分。地形 LightGBM 的留出折中，时长贡献最大（AP 下降 0.0898），随后是经度（0.0354）、大尺度平均坡度（0.0246）和纬度（0.0212）。这些结果将树模型的预测收益具体联系到观察努力、地理位置及多尺度地形的组合，也解释了增加环境维度为何不能自动改善所有模型。监测时统一努力记录并保持空间覆盖，有助于区分观察机会与地点条件所贡献的报告差异。
+\else
+Permutation importance exposed different information dependencies (Figure~\ref{fig:imp}). Permuting elevation reduced neural-branch AP by 0.0809, versus 0.0075 for greenness, identifying elevation as the branch's main organizing gradient. In the held-out terrain-LightGBM fold, duration contributed most (AP reduction 0.0898), followed by longitude (0.0354), broad-scale mean slope (0.0246) and latitude (0.0212). Tree-model predictions therefore depended on a combination of observation effort, geographic position and multiscale terrain. Recording effort consistently while preserving spatial coverage helps separate reporting differences associated with observation opportunity from those associated with site conditions.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig19_permutation_importance}
+\caption{\ifzh
+置换变量造成的 AP 下降，误差线为置换重复的标准差。神经面板使用拟合来源样本，LightGBM 面板使用一个地理留出折，分别描述各模型的信息依赖。
+\else
+AP reductions after feature permutation, with standard deviations across permutations. The neural panel uses fitting-source observations and the LightGBM panel uses one geographic holdout; each describes its model's information dependence.
+\fi}\label{fig:imp}
+\end{figure}
+\FloatBarrier

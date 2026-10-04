@@ -1,0 +1,18 @@
+{
+  "elevation_edges_m": [
+    300,
+    600
+  ],
+  "checklist_NDVI_tertile_cutpoints": [
+    0.417184983215772,
+    0.700636512519596
+  ],
+  "block_deg": 0.08,
+  "block_offset": [
+    0.050956934985716344,
+    0.021582937101109624
+  ],
+  "bootstrap_replicates": 1000,
+  "seed": 20261001,
+  "exploratory_analysis": true
+}

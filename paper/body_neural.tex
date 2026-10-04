@@ -1,0 +1,81 @@
+\subsection{\ifzh 训练来源重叠解释了神经配置的偏高评价\else Training-source overlap compromises neural performance estimates\fi}
+\label{sec:neuraldiagnostic}
+\ifzh
+重建三次空间划分后，完整记录测试样本与对应全部记录神经训练来源的重叠比例分别为 \rwOverlapOne\%、\rwOverlapTwo\% 和 \rwOverlapThree\%（图~\ref{fig:overlap}）。其来源是两张表分别进行样本量均衡分折，使同一地理区块获得不同折编号；随后按编号筛选，部分测试记录被纳入训练。HERON-plus 未设置内部早停留出，因而直接使用这些重叠记录拟合。原 HERON 的内部留出会进一步筛选训练来源，故图中比例表示其训练来源暴露率。该诊断确定了跨表划分对应关系是评价偏差的具体来源。
+\else
+Across three reconstructed spatial partitions, \rwOverlapOne\%, \rwOverlapTwo\% and \rwOverlapThree\% of complete-record test observations appeared in the corresponding all-record neural training sources (Figure~\ref{fig:overlap}). Independently balancing folds in the two tables assigned different fold identifiers to the same geographic blocks. Subsequent filtering by identifier admitted test records to training. HERON-plus, which omitted internal early-stopping holdout, fitted these overlapping records directly. Original HERON further filtered its training source internally, so the displayed percentage measures source exposure for that configuration. The diagnostic identifies cross-table partition alignment as a concrete source of evaluation bias.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig24_training_overlap_rewrite}
+\caption{\ifzh
+三次空间划分的逐折训练来源重叠比例。每条线代表一次划分，横轴为测试折；正文的汇总比例按每次划分全部 68,976 条测试记录加权。
+\else
+Fold-specific training-source overlap across three spatial partitions. Each line represents one partition and the horizontal axis identifies test folds. Text summaries weight all 68,976 test records within each partition.
+\fi}\label{fig:overlap}
+\end{figure}
+\ifzh
+全模型比较中，HERON-plus 的平均 AUC/AP 为 0.8952/0.3916（图~\ref{fig:bench}；表~\ref{tab:bench}），在共同 20 折中分别有 19 折和 20 折高于 m4（图~\ref{fig:paired}）。十折直接比较中，其 AUC/AP 从 HERON 的 0.8406/0.2686 升至 0.8831/0.3624，前十分位召回率从 48.97\% 升至 59.48\%（表~\ref{tab:bench_headtohead}）。这种跨折一致的高分与广泛训练暴露同时存在，表明配对测试集并未消除训练阶段的信息共享。由此，神经配置的高分应解释为包含测试暴露的预测表现；本文对地理推广能力的判断采用训练与测试分离的常规模型结果。这种信息共享削弱了神经高分用于新增监测地点的依据，也不能加强高得分环境具有较高占域持续概率的解释。对低地复访，应依据已分离训练与测试的环境分层结果选择候选记录，使监测覆盖的改善来自留出报告识别能力。
+\else
+In the all-model comparison, HERON-plus had mean AUC/AP 0.8952/0.3916 (Figure~\ref{fig:bench}; Table~\ref{tab:bench}), exceeding m4 in 19 and 20 of the 20 shared folds, respectively (Figure~\ref{fig:paired}). In the ten-fold head-to-head comparison, its AUC/AP rose from HERON's 0.8406/0.2686 to 0.8831/0.3624, with top-decile recall increasing from 48.97\% to 59.48\% (Table~\ref{tab:bench_headtohead}). Consistently high scores coexisted with extensive training exposure. Pairing test sets did not remove information sharing during fitting. Neural scores describe prediction with test exposure, and the geographic-transfer assessment therefore rests on the conventional models with separated training and testing. This information sharing weakens the use of neural scores to justify new monitoring locations and cannot strengthen a persistence interpretation for high-scoring environments. Lowland revisit candidates should instead be informed by the separated-training stratified results, so that coverage gains rest on identification of held-out reports.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig05_main_benchmark_spatial}
+\caption{\ifzh
+共同 20 折上的全模型性能。误差线为折间标准误；神经配置的评价包含图~\ref{fig:overlap}所示的训练来源重叠。
+\else
+All-model performance on 20 common folds. Bars show standard errors across folds; neural evaluations include the training-source overlap in Figure~\ref{fig:overlap}.
+\fi}\label{fig:bench}
+\end{figure}
+\inctab{bench}
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig07_paired_folds}
+\caption{\ifzh
+HERON-plus 与 m4 的逐折配对结果。点表示共同测试折，虚线表示两模型分数相同；神经训练来源与测试样本存在重叠。
+\else
+Paired fold results for HERON-plus and m4. Points represent shared test folds and the dashed line denotes equal scores; neural training sources overlap test observations.
+\fi}\label{fig:paired}
+\end{figure}
+\inctab{bench_headtohead}
+\ifzh
+多指标比较将这种差异分解为判别、概率误差和高分清单覆盖（图~\ref{fig:heat}）。常规树模型的改善集中在排序及部分概率误差指标，MLP 的增加维度配置则在多个指标上下降，与主基准中的 Brier 增加一致。F1、MCC、平衡准确率和召回率共同受同一组预测与阈值影响，因此这些列反映同一预测结果的不同使用方式。对监测决策而言，指标图的主要作用是识别模型在哪类任务上有收益，以及收益是否伴随概率质量损失。较高召回率可增加复访候选记录，较好的概率质量可支持预期报告量估计；两者都需要与环境分层结合，才能判断低地覆盖是否增加、山地跟踪是否减弱。多项指标一致改善不会增加地点状态转移的观测信息。
+\else
+The metric comparison separates discrimination, probability error and coverage of highly ranked checklists (Figure~\ref{fig:heat}). Conventional tree-model gains concentrate in ranking and selected probability-error measures, whereas the higher-dimensional MLP declines on multiple measures, consistent with its increased Brier score. F1, MCC, balanced accuracy and recall depend on the same predictions and threshold rule; they describe different uses of those predictions. For monitoring, the display identifies which tasks benefit and whether ranking gains accompany losses in probability quality. Higher recall can expand candidate records and better probability quality can support expected-report estimates. Both must be combined with environmental stratification to determine whether lowland coverage improves or upland tracking weakens. Agreement across metrics does not add observations of site-state transitions.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig18_metric_winloss_heatmap}
+\caption{\ifzh
+相对 m4 的 16 项预测指标差异。颜色表示按逐折差值标准差缩放的改善幅度，正负号表示改善方向；图中不进行显著性分类。
+\else
+Differences from m4 across 16 prediction metrics. Colors scale gains by the standard deviation of fold differences; signs indicate the direction of improvement. No significance classification is applied.
+\fi}\label{fig:heat}
+\end{figure}
+\FloatBarrier
+\subsection{\ifzh 消融结果揭示空间输入与树成员的主要作用\else Ablations highlight spatial inputs and tree members\fi}
+\ifzh
+神经分支消融中，空间 Fourier 特征产生最大的 AUC 增量（+0.0347），加入地形次之（+0.0204）；去除分组损失或空间风险惩罚的 AUC 变化均为 $-0.0002$（图~\ref{fig:abl}；表~\ref{tab:ablation}）。将分组损失权重增至五倍反而使 AP 下降 0.0124。该组合表明，当前拟合分数主要响应空间表达能力和环境输入，分组约束没有带来相应的排序改善。去除单调努力约束使 AUC/AP 增加 0.0101/0.0078，说明约束压缩了模型拟合空间；其价值在于规定响应形状，而非提高当前评价分数。Platt 校准保留 AUC/AP，却将 Brier 从未校准的 0.03953 变为 0.03971，表明该校准步骤没有改善此配置的总体概率误差。上述比较描述含训练暴露流程的内部响应，空间特征亦可能利用这种暴露增强拟合。对环境解释而言，空间表达带来的高分不能据此归为更强的植被或海拔效应；分组约束的小幅变化也未增加占域持续性的直接证据。该消融因此将监测用途定位在候选记录的拟合排序，而占域持续性的判断仍需重复调查中的状态转移。
+\else
+Spatial Fourier features produced the largest neural-branch AUC increase (+0.0347), followed by terrain (+0.0204). Removing the grouped loss or spatial-risk penalty changed AUC by only $-0.0002$ in each case (Figure~\ref{fig:abl}; Table~\ref{tab:ablation}). Increasing the grouped-loss weight fivefold reduced AP by 0.0124. Scores therefore responded mainly to spatial representation and environmental inputs, while grouped constraints supplied little ranking improvement. Removing monotone effort constraints increased AUC/AP by 0.0101/0.0078, showing the fitting restriction imposed by that structural choice. Platt calibration preserved AUC/AP but changed Brier from 0.03953 without calibration to 0.03971 with it, providing no improvement in overall probability error. These are internal responses of the exposed-training workflow; spatial features may also exploit that exposure. For environmental interpretation, gains from spatial representation cannot be assigned to stronger vegetation or elevation effects, and small grouped-loss responses add no direct persistence evidence. The ablation informs fitted record ranking; occupancy persistence still requires transition information from repeated surveys.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig10_ablation}
+\caption{\ifzh
+神经分支的 20 折组件比较。差值相对于基础神经分支，误差线为配对差值的标准误；各行展示该训练流程对组件改变的响应。
+\else
+Twenty-fold neural-component comparisons. Deltas are relative to the base neural branch and bars show standard errors of paired differences; rows describe responses to component changes within this training workflow.
+\fi}\label{fig:abl}
+\end{figure}
+\inctab{ablation}
+\ifzh
+六折堆叠消融显示，去除树成员使 AUC 下降 0.0311、AP 下降 0.0271，而去除神经成员仅分别下降 0.0034 和 0.0046（表~\ref{tab:ablation_stack}）。因此，该组合的分数主要由树成员维持，神经成员的增量较小。去除 GLM 后 AUC 增加 0.0010，但 AP 下降 0.0067、Brier 增加 0.00036，说明 GLM 对总体判别的贡献较小，却有助于正报告排序和概率误差。堆叠的作用表现为成员间的互补，而非所有成员在所有指标上均提供同方向收益。其对监测的启示是优先检验较简单树模型能否完成低地候选记录筛查，再评价组合是否增加特定环境的覆盖。这里的成员贡献没有按环境分解，不能据此推断神经分支识别出了常规模型遗漏的持续占域网格。
+\else
+In the six-fold stack ablation, removing tree members reduced AUC by 0.0311 and AP by 0.0271, whereas removing the neural member reduced them by only 0.0034 and 0.0046 (Table~\ref{tab:ablation_stack}). Tree members therefore maintained most of the combination's score, with a smaller neural increment. Removing the GLM increased AUC by 0.0010 but reduced AP by 0.0067 and increased Brier by 0.00036. The GLM contributed little to overall discrimination while supporting positive-report ranking and probability error. Stacking consequently reflected complementary contributions across metrics. For monitoring, this favors testing whether simpler tree models suffice for lowland candidate screening before assessing whether a combination adds coverage in particular environments. These member contributions were not decomposed by environment and do not establish that the neural branch located additional grids with persistent occupancy.
+\fi
+\inctab{ablation_stack}
+\ifzh
+将训练来源从 68,976 条完整记录扩展到 89,682 条全部记录时，六折堆叠的 AUC/AP 从 0.8623/0.3343 升至 0.8658/0.3398（图~\ref{fig:miss}）。其 AP 增量为 0.0055，明显小于 20 折神经分支比较的 0.0217，说明增加记录在单分支和组合模型中的贡献并不相同。新增记录的正报告比例较高（8.71\% 对 4.89\%），扩展训练同时改变了报告组成和跨表训练暴露。因而该结果反映的是数据组成与划分关系共同变化后的分数响应，不能把增量全部归给额外缺失记录携带的环境信息。结合高海拔 NDVI 缺失率达 49.6\% 的结果，保留缺失记录具有改善山地代表性的明确数据价值；但该价值尚未被这里的分数增量单独量化。环境监测应先保证缺失记录对应地点仍被纳入覆盖，并补充可比较的植被信息，再检验其是否改变山地报告回升和占域持续概率的估计。
+\else
+Expanding the training source from 68,976 complete records to all 89,682 records increased six-fold stack AUC/AP from 0.8623/0.3343 to 0.8658/0.3398 (Figure~\ref{fig:miss}). The AP increase of 0.0055 was smaller than the 0.0217 contrast in the 20-fold neural-branch comparison, showing that additional records affected the branch and the combined predictor differently. Added records had a higher report rate (8.71\% versus 4.89\%), and expansion changed both report composition and cross-table training exposure. The score response therefore combines changes in data composition and partition alignment, rather than isolating environmental information supplied by the additional records. Given 49.6\% NDVI missingness at high elevation, retaining missing records has a clear representational value for uplands, although these score increments do not isolate that benefit. Monitoring should preserve coverage of locations associated with missing records and recover comparable vegetation information before testing whether they change estimated upland reporting rebound and occupancy persistence.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig20_missingness_gain}
+\caption{\ifzh
+六折堆叠中全部记录与完整记录训练的比较。线连接同一折的结果；扩展数据同时改变样本组成与训练来源对应关系。
+\else
+All-record versus complete-record training in the six-fold stack. Lines connect results from the same fold; expansion changes both sample composition and training-source alignment.
+\fi}\label{fig:miss}
+\end{figure}
+\FloatBarrier

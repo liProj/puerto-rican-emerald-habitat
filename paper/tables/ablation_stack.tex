@@ -1,0 +1,16 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{\ifzh
+六折堆叠消融。差值以完整堆叠为参照。
+\else
+Six-fold stack ablation. Deltas use the full stack as reference.
+\fi}\label{tab:ablation_stack}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrrr}\toprule
+Variant & AUC & $\Delta$ & AP & $\Delta$ & pseudo-$R^2$ & $\Delta$ & Brier & $\Delta$ \\ \midrule
+\textbf{HERON (full)} & 0.8658 &  & 0.3398 &  & 0.2631 &  & 0.03807 &  \\
+- tree members & 0.8347 & -0.0311 & 0.3127 & -0.0271 & 0.2258 & -0.0373 & 0.03885 & +0.00078 \\
+- GLM member & 0.8668 & +0.0010 & 0.3330 & -0.0067 & 0.2573 & -0.0058 & 0.03843 & +0.00036 \\
+- all-data training & 0.8623 & -0.0035 & 0.3343 & -0.0055 & 0.2576 & -0.0054 & 0.03831 & +0.00024 \\
+- neural member & 0.8624 & -0.0034 & 0.3351 & -0.0046 & 0.2585 & -0.0046 & 0.03826 & +0.00019 \\
+\bottomrule\end{tabular}
+\end{adjustbox}\end{table}

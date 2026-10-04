@@ -1,0 +1,63 @@
+\subsection{\ifzh 时间留出支持后期复访候选记录的识别\else Temporal holdout supports identification of later-period revisit candidates\fi}
+\label{sec:additionalvalidation}
+\ifzh
+随机、空间和时间验证显示出不同的难度结构（图~\ref{fig:proto}；表~\ref{tab:bench_random}）。随机划分中，训练与测试覆盖相近的地点组合，树模型能够利用细致的局地模式；空间留出后其优势缩小，说明这些局地模式的可迁移程度低于随机划分表现。在 Fiona 后时间测试中，随机森林的 AUC、AP 和 Brier 分别为 0.8901、0.3869 和 0.0391，而 m4 分别为 0.8321、0.3174 和 0.0422（表~\ref{tab:bench_temporal}）。随机森林将前十分位召回率从 53.28\% 提高到 59.80\%，同时降低概率误差，表明较早时期学习的环境与观测关系对末期报告仍有预测价值。利用较早记录得到的排序仍能在 Fiona 后的观测中集中较多正报告，可用于筛选值得重新调查的地点。与低地分层结果结合，其监测用途是扩大稀少报告的检索，再通过同一地点的重复访问积累探测历史，估计占域状态及其转移。不过，该时间测试汇总所有海拔层，尚未单独量化低地不同绿度组合的跨时期收益；监测方案应保留这些组合的固定复访，检验预测信息是否同样适用。时间测试沿用同一岛屿的观测网络，其较好表现支持报告线索的跨时期使用，对鸟类占域持续性的判断仍来自重复调查和转移模型。
+\else
+The random, spatial and temporal protocols expose different prediction demands (Figure~\ref{fig:proto}; Table~\ref{tab:bench_random}). Random splits retain similar location mixtures in training and testing, allowing tree models to use detailed local patterns. Their smaller spatial-holdout advantage indicates weaker transfer of those patterns across locations. In the Post-Fiona time test, random forest achieved AUC 0.8901, AP 0.3869 and Brier 0.0391, compared with 0.8321, 0.3174 and 0.0422 for m4 (Table~\ref{tab:bench_temporal}). Top-decile recall increased from 53.28\% to 59.80\% while probability error declined. Environmental and observation relationships learned in earlier periods therefore retained predictive value for later reports. Rankings learned from earlier records still concentrate positive reports in Post-Fiona observations and can help select sites worth surveying again. In conjunction with the lowland analysis, its monitoring role is to broaden searches for sparse reports before repeated visits supply detection histories for estimating occupancy states and transitions. The temporal test pools elevation bands and does not separately quantify transfer within lowland greenness cells; fixed revisits across those cells are needed to assess whether the predictive information applies equally. Because the test uses the same island observation network, it supports cross-period use of reporting clues, while inference about continued occupancy rests on repeated surveys and transition models.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig06_protocol_comparison}
+\caption{\ifzh
+三种验证情境中的 AUC 与 AP。空间、随机和时间测试分别强调地理区块留出、观测插值和时期迁移；神经配置的训练来源重叠见第~\ref{sec:neuraldiagnostic}节。
+\else
+AUC and AP under geographic holdout, observation interpolation and transfer across periods. Neural training-source overlap is analyzed in Section~\ref{sec:neuraldiagnostic}.
+\fi}\label{fig:proto}
+\end{figure}
+\inctab{bench_random}
+\inctab{bench_temporal}
+\FloatBarrier
+\subsection{\ifzh 区块尺度与植被指数影响预测增益的幅度\else Block size and vegetation index affect the size of predictive gains\fi}
+\ifzh
+区块边长从 $0.04^\circ$ 增至 $0.32^\circ$ 时，加入地形的 LightGBM 的 AUC 从 0.8555 降至 0.8351，AP 从 0.3066 降至 0.2592（图~\ref{fig:blocksize}）。m4 的 AUC 分别为 0.8002 和 0.8024，端点变化较小。相应的 AUC 优势由 0.0553 缩小至 0.0327，说明灵活模型捕获的信息中，一部分依赖较细的空间组织。在 $0.16^\circ$ 下，LightGBM 的 AUC 为 0.8413，高于 m4 的 0.8146，但 AP 为 0.2904，低于 m4 的 0.2975；总体判别改善并不保证稀少正报告在排序顶端更加集中。曲线的非单调变化反映了区块合并和折内样本组成共同改变评价难度，区块宽度应与目标监测覆盖尺度一并考虑。低地持续性调查需要在拟开展调查的区域内检验地点排序的表现。在较近地点间有效的细致地形和位置线索，跨更大区块后可能减弱。扩大调查范围时，保留各环境层的固定点可防止排序效能下降造成某一类环境持续缺少复访；这些全样本尺度结果尚未单独确定低地各绿度层的适用距离。
+\else
+As block width increased from $0.04^\circ$ to $0.32^\circ$, terrain-augmented LightGBM declined from AUC 0.8555 to 0.8351 and from AP 0.3066 to 0.2592 (Figure~\ref{fig:blocksize}). The corresponding m4 AUC values were 0.8002 and 0.8024. LightGBM's AUC advantage consequently narrowed from 0.0553 to 0.0327, indicating that part of its predictive information depends on finer spatial organization. At $0.16^\circ$, LightGBM retained higher AUC than m4 (0.8413 versus 0.8146) but lower AP (0.2904 versus 0.2975). Better overall discrimination thus did not consistently concentrate rare positive reports at the top of the ranking. Nonmonotonic changes reflect the joint effects of block aggregation and fold composition, making the monitoring scale relevant to model assessment. For lowland persistence surveys, this supports assessing candidate-site rankings at the intended regional scale. Terrain and location information useful among nearby sites may weaken across larger blocks. Fixed sites in each environmental stratum can preserve revisit coverage as the survey domain expands; these pooled scale tests do not separately establish transfer distances for lowland greenness cells.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig17_blocksize_sensitivity}
+\caption{\ifzh
+四种地理区块宽度下的 AUC 与 AP。各尺度采用六折评价，误差线为折均值的标准误；划分未设置距离缓冲。
+\else
+AUC and AP across four geographic block widths, with six folds at each width. Bars show standard errors across folds; no distance buffer was imposed.
+\fi}\label{fig:blocksize}
+\end{figure}
+\ifzh
+EVI2 的六折实验保持了树模型在报告排序上的优势（表~\ref{tab:bench_evi2}）。随机森林的 AP 为 0.3223，比同一实验中的 m4（0.2765）提高 0.0458，Brier 从 0.0402 降至 0.0386。加入地形的 XGBoost 取得最高常规模型 AUC（0.8576），前十分位召回率为 56.15\%。因此，树模型优势并不只出现在采用 NDVI 的分析中。另一方面，EVI2 下 MLP 的 Brier 为 0.0515，加入地形后升至 0.0583，显示增加地形输入没有改善其概率估计。两个植被指数的实验共同指向模型对环境信息的利用方式，而非输入维度本身，是预测表现的重要因素。替代绿度指数仍能支持报告排序，增强了以植被信息辅助候选地点筛查的依据；但该实验比较的是清单预测，并未重新估计 EVI2 与占域持续性的关系。因此，绿度指标对监测排序的帮助与绿度与占域持续概率的关联，需要分别由预测和转移结果支撑。
+\else
+The six-fold EVI2 experiment retained the tree models' ranking advantage (Table~\ref{tab:bench_evi2}). Random forest achieved AP 0.3223, exceeding m4 within the same experiment (0.2765) by 0.0458, while reducing Brier from 0.0402 to 0.0386. Terrain-augmented XGBoost had the highest conventional-model AUC (0.8576) and top-decile recall of 56.15\%. The tree-model advantage therefore also appeared with EVI2. In contrast, MLP Brier increased from 0.0515 to 0.0583 when terrain was added. Across the vegetation-index experiments, performance depended on how models used environmental information, rather than simply on the number of inputs. Retaining useful report ranking with an alternative vegetation index strengthens the basis for vegetation-informed screening of candidate locations. However, this experiment did not re-estimate the association between EVI2 and persistence. The value of greenness for screening and its association with occupancy persistence therefore rest on prediction and transition evidence, respectively.
+\fi
+\inctab{bench_evi2}
+\FloatBarrier
+\subsection{\ifzh 排序改善与概率校准呈现不同的模型优势\else Ranking and calibration favor different model properties\fi}
+\ifzh
+十折合并预测的 ROC 与精确率--召回率曲线进一步解释了性能差异（图~\ref{fig:curves}）。m4 的合并 AUC/AP 为 0.8088/0.2836，加入地形的 XGBoost 为 0.8640/0.3162，LightGBM 为 0.8625/0.3086。两类提升树均改善了正报告与未报告清单之间的排序，XGBoost 在正报告集中的排序区间取得更高 AP。由于正报告仅占完整样本的 4.89\%，精确率--召回率曲线比单独报告 AUC 更直接地体现高分清单中的命中密度。
+\else
+The pooled ten-fold ROC and precision--recall curves clarify the ranking differences (Figure~\ref{fig:curves}). Pooled AUC/AP were 0.8088/0.2836 for m4, 0.8640/0.3162 for terrain-augmented XGBoost and 0.8625/0.3086 for terrain-augmented LightGBM. Both boosting models improved ordering between positive and nonreporting checklists; XGBoost provided higher AP in the positive-report ranking. With reports comprising only 4.89\% of complete records, precision--recall curves directly describe the concentration of positives among highly ranked checklists.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig08_roc_pr_curves}
+\caption{\ifzh
+十折预测合并后的 ROC 与精确率--召回率曲线。括号内为合并 AUC 或 AP；水平虚线表示正报告比例。
+\else
+ROC and precision--recall curves pooled across the ten-fold prediction export. Parentheses give pooled AUC or AP; the horizontal dashed line marks report prevalence.
+\fi}\label{fig:curves}
+\end{figure}
+\ifzh
+概率校准呈现不同次序（图~\ref{fig:calib}）。m4 的期望校准误差为 0.0032，低于样条 GLM 的 0.0050、地形 XGBoost 的 0.0093 和地形 LightGBM 的 0.0181。XGBoost 的合并 Brier 为 0.0389，低于 m4 的 0.0402，但其分组平均概率与实际频率的偏离更大。该组合说明，树模型通过更强的个体区分能力降低总体平方误差，而简单 GLM 更接近分组频率尺度。用于优先排列调查清单时，应重视 AP 和前十分位召回；用于汇总预期报告数量时，则需同时关注概率校准。排序帮助找到低地稀少报告，校准则影响各环境层预期报告水平的估计。若直接把偏高的预测概率当作回升幅度，可能夸大该层的变化；目前的总体校准结果需要在环境层内继续核查，才能用于比较低地与山地的预期报告数量。
+\else
+Calibration produced a different ordering (Figure~\ref{fig:calib}). Expected calibration error was 0.0032 for m4, versus 0.0050 for the spline GLM, 0.0093 for terrain-augmented XGBoost and 0.0181 for terrain-augmented LightGBM. XGBoost nevertheless had lower pooled Brier than m4 (0.0389 versus 0.0402). Its stronger discrimination reduced overall squared error while grouped predicted probabilities deviated more from observed frequencies. AP and top-decile recall consequently address prioritization, whereas probability calibration also matters when aggregating expected report counts. Ranking helps identify sparse lowland reports, while calibration affects estimated reporting levels within environmental strata. Upward-biased probabilities could overstate apparent rebound if interpreted directly as change. The current pooled calibration results require within-stratum assessment before comparing expected report counts between lowlands and uplands.
+\fi
+\begin{figure}[htbp]\centering\incfig[\linewidth]{fig09_calibration}
+\caption{\ifzh
+概率可靠性与校准误差。可靠性曲线采用 12 个等频组，期望校准误差采用 15 个等频组；对角线表示预测概率与观测频率一致。
+\else
+Probability reliability and calibration error. Reliability curves use 12 equal-count bins and expected calibration error uses 15; the diagonal denotes agreement between predicted probability and observed frequency.
+\fi}\label{fig:calib}
+\end{figure}
+\FloatBarrier

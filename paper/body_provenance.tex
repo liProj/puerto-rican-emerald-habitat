@@ -1,0 +1,20 @@
+\ifzh
+表~\ref{tab:screen}列出研究对象的来源筛选。参考研究的实施适合度得分为 5.1，高于其余候选的 3.4--4.1，主要优势是同时提供观测数据、环境协变量、分析脚本及校验信息。这使本研究能够从同一输入出发，连续检查报告格局、占域过程和预测验证，减少不同资料来源造成的比较差异。
+\else
+Table~\ref{tab:screen} summarizes source selection. The reference study scored 5.1 for implementation suitability, compared with 3.4--4.1 for the other candidates. Its combination of observations, environmental covariates, analysis scripts and checksums enabled a linked evaluation of reporting patterns, occupancy processes and predictive validation from a common input.
+\fi
+\inctab{screen}
+\ifzh
+数据核验通过 53/54 项检查，GLM 的 44/44 项检查均在规定容差内通过，11 个占域系数及标准误也得到复现（图~\ref{fig:verify}；表~\ref{tab:verify}）。唯一的数据检查差异涉及两条日期--坐标组合重复产生的多余记录，约占全部清单的 0.0022\%，且均未报告目标物种。该结果将数值差异的排查重点从文件版本和样本筛选转向模型内部的观测协变量对应关系。
+\else
+Data verification passed 53 of 54 checks; all 44 GLM checks met their tolerances, and all 11 occupancy coefficients and standard errors were reproduced (Figure~\ref{fig:verify}; Table~\ref{tab:verify}). The sole data-check discrepancy involved two excess records with duplicated date--coordinate combinations, approximately 0.0022\% of all checklists, both without a species report. This localized the subsequent investigation to observation-covariate alignment within the model rather than differences in input versions or filtering.
+\fi
+\begin{figure}[htbp]\centering\incfig{fig02_verification_and_reproduction}
+\caption{\ifzh
+数据核验与模型数值复现。颜色区分检查类别，系数比较使用原模型排列。
+\else
+Data verification and numerical model reproduction. Colors distinguish check categories; coefficient comparisons use the original model ordering.
+\fi}\label{fig:verify}\end{figure}
+\FloatBarrier
+{\footnotesize\renewcommand{\arraystretch}{0.96}\inctab{verify}}
+\FloatBarrier

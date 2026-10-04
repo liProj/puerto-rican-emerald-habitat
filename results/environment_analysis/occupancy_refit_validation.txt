@@ -1,0 +1,1 @@
+AIC 2892.10417457494 max_coefficient_difference 4.88498130835069e-15

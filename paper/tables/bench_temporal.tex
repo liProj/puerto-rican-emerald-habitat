@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{\ifzh
+Fiona 后时间留出结果，数值为三个拟合种子的均值；各次拟合使用同一时间测试集。
+\else
+Post-Fiona temporal holdout, averaged across three fitting seeds evaluated on the same temporal test set.
+\fi}\label{tab:bench_temporal}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrrr}\toprule
+Method & AUC & AP & pseudo-$R^2$ & Tjur $R^2$ & Brier & LogLoss & ECE & Recall at 10pct \\
+& $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $\downarrow$ & $\downarrow$ & $\uparrow$ \\ \midrule
+GLM-m3 (published) & 0.8330 & 0.3171 & 0.2203 & 0.1688 & 0.0423 & 0.1622 & 0.0077 & 0.5335 \\
+GLM-m4 (published)\,$\ddagger$ & 0.8321 & 0.3174 & 0.2189 & 0.1578 & 0.0422 & 0.1624 & 0.0093 & 0.5328 \\
+GLM-splines & 0.8467 & 0.3389 & 0.2414 & 0.1653 & 0.0411 & 0.1578 & 0.0141 & 0.5711 \\
+GLM-m4 + terrain & 0.8513 & 0.3351 & 0.2462 & 0.1922 & 0.0413 & 0.1568 & 0.0095 & 0.5609 \\
+RandomForest & 0.8901 & 0.3869 & 0.3084 & 0.2096 & 0.0391 & 0.1438 & 0.0063 & 0.5980 \\
+MLP & 0.8259 & 0.2305 & -0.1468 & 0.2017 & 0.0523 & 0.2385 & 0.0400 & 0.4474 \\
+MLP + terrain & 0.8328 & 0.2481 & -0.6514 & 0.2637 & 0.0583 & 0.3434 & 0.0517 & 0.4929 \\
+LightGBM & 0.8797 & 0.3514 & 0.1965 & 0.2170 & 0.0420 & 0.1671 & 0.0219 & 0.5626 \\
+LightGBM + terrain & 0.8842 & 0.3545 & 0.1749 & 0.2183 & 0.0421 & 0.1716 & 0.0224 & 0.5670 \\
+XGBoost & 0.8835 & 0.3647 & 0.2730 & 0.2263 & 0.0405 & 0.1512 & 0.0133 & 0.5747 \\
+XGBoost + terrain & 0.8873 & 0.3712 & 0.2751 & 0.2293 & 0.0402 & 0.1508 & 0.0132 & 0.5847 \\
+HERON-NN & 0.8391 & 0.3251 & 0.2281 & 0.1871 & 0.0417 & 0.1605 & 0.0147 & 0.5528 \\
+HERON & 0.8913 & 0.3851 & 0.3109 & 0.2144 & 0.0392 & 0.1433 & 0.0064 & 0.5919 \\
+\textbf{HERON-plus} & 0.8932 & 0.3949 & 0.3125 & 0.2328 & 0.0390 & 0.1430 & 0.0108 & 0.6029 \\
+\bottomrule\end{tabular}
+\end{adjustbox}
+\\[2pt]\footnotesize $\ddagger$ the model published by \cite{ortiz2026}.
+\end{table}

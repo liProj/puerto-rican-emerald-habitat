@@ -1,0 +1,22 @@
+\subsection{\ifzh 环境分层、过程概率与监测预算实验\else Environmental stratification, process probabilities and monitoring budgets\fi}
+\label{sec:envmethods}
+\ifzh
+补充分析将海拔分为低于 300~m、300--不足 600~m 和不低于 600~m 三层；NDVI 采用 68,976 条完整清单的三分位切点 0.4172 和 0.7006，形成九个环境组合。这些分层用于探索环境异质性，不作为物种的生境阈值。占域分析将相同 NDVI 切点应用于地点跨时期均值，并报告各组合的地点数；少于十个地点的组合单独标记。
+\else
+Supplementary analyses stratified elevation as below 300~m, 300--below 600~m, and at least 600~m. NDVI tertile cutpoints of 0.4172 and 0.7006, computed from 68,976 complete checklists, produced nine environmental combinations. These exploratory strata describe heterogeneity rather than species habitat thresholds. Occupancy summaries apply the same NDVI cutpoints to cross-period site means, report site counts, and flag combinations with fewer than ten sites.
+\fi
+\ifzh
+NDVI 缺失比较先汇总各海拔层的报告率与缺失率，再拟合缺失指示变量与报告之间的二项关联模型，依次加入时期和海拔样条，以及调查时长的对数、距离的 $\log(1+x)$ 变换、季度和经纬度二次项。标准误按 214 个 $0.08^\circ$ 空间区块聚类。模型使用信赖域优化获得稳定起点，并检查收敛、梯度及协方差。报告回升使用复现的 m4 公式重新拟合，将每个环境组合内全部记录的协变量分布固定，分别替换时期后求平均预测。Fiona 后相对 María 前的差值区间通过聚类协方差和 delta 法计算；原始分层报告率另进行 1,000 次空间区块自助抽样。
+\else
+NDVI-missing comparisons first summarize report and missingness rates within elevation bands. Binomial reporting models then relate reports to a missingness indicator, sequentially adding period and an elevation spline, followed by log duration, $\log(1+x)$ distance, quarter, and quadratic geographic-coordinate terms. Standard errors cluster 214 geographic blocks of width $0.08^\circ$. Trust-region optimization supplies stable starting values, with convergence, gradient and covariance checks. Reporting rebound is standardized using a refit of the reproduced m4 formula. Each environmental cell retains its pooled covariate distribution while period is replaced in turn. Post-Fiona minus Pre-Mar\'ia intervals use clustered covariance and the delta method; raw stratified rates additionally use 1,000 spatial block bootstrap samples.
+\fi
+\ifzh
+校正占域模型在 DGX 上重新拟合，系数与已有校正结果的最大差异小于 $10^{-4}$。对每个地点预测初始占域、占域持续概率 $1-\varepsilon$ 和定殖 $\gamma$，再按环境组合平均。2,000 次联合正态参数模拟保留完整协方差，给出概率与对比的 95\% 区间。固定海拔 100~m、NDVI 从 0.30 增至 0.76 的对比用于分离低海拔内的绿度响应；这些取值近似对应低海拔低、高绿度地点的中位数。另从九列检测历史中筛选相邻两个时期各有三次访问的地点--时期对，统计前期已报告后再次报告的比例。此比例描述等访问次数下的重复报告，与潜在占域转移分别呈现。
+\else
+The corrected occupancy model was refitted on the DGX, reproducing existing corrected coefficients within $10^{-4}$. Site predictions of initial occupancy, occupancy persistence probability $1-\varepsilon$, and colonization $\gamma$ were averaged by environmental cell. Two thousand joint normal coefficient draws preserve the full covariance and yield 95\% probability and contrast intervals. A contrast at 100~m from NDVI 0.30 to 0.76 isolates the fitted greenness response; these values approximate the low- and high-greenness medians among low-elevation sites. Adjacent period pairs with three visits in each period were also extracted from the nine-column detection history to summarize repeated reports conditional on a previous report. This equal-visit reporting proportion is presented separately from latent occupancy transitions.
+\fi
+\ifzh
+新增随机森林采用原 400 棵树、最小叶节点样本数五和种子零，在一次十折空间划分中重新训练。逐折核验事件标识符和地理区块的训练--测试交集均为空，并重新计算 m4 的首折预测验证原预测文件的行对应关系。分层预测比较包括 m4、随机森林和两种地形提升树。监测预算在每个测试折固定为清单数的 10\% 向下取整。全局方案直接选该折最高分记录，分层方案按各海拔层样本量分配约 10\%，采用最大余数分配保持每折总名额完全相同。两方案均选择 6,890 条清单。报告 AP、Brier、各层入选比例及正报告覆盖率；覆盖率差的区间采用 1,000 次空间区块自助抽样，条件于本次划分的拟合预测。该实验评价已有清单的排序与环境覆盖，不把清单数直接换算为实地访问成本。
+\else
+A new random forest used the original 400 trees, minimum leaf size five and seed zero in one ten-fold spatial partition. Every fold was checked for disjoint training/test event identifiers and geographic blocks; recomputing the first m4 fold validated the row alignment of the saved predictions. Stratified comparisons include m4, random forest and both terrain-augmented boosting models. Each test fold receives a budget equal to the floor of 10\% of its checklist count. Global ranking selects the highest scores within that fold; stratified ranking allocates approximately 10\% within each elevation band, using largest remainders to preserve exactly the same fold budget. Both select 6,890 checklists. AP, Brier, selection fractions and positive-report coverage are reported by stratum. Coverage-contrast intervals use 1,000 spatial block bootstrap samples conditional on this partition's fitted predictions. The experiment evaluates record ranking and environmental coverage; checklist counts are not converted into field-visit costs.
+\fi

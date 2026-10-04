@@ -1,0 +1,6 @@
+model,observations
+m0_intercept_only,68976
+m1_period,68976
+m2_period_effort,68976
+m3_environment_effort_additive,68976
+m4_period_elevation_interaction,68976

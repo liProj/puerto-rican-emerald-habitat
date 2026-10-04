@@ -1,0 +1,26 @@
+\subsection{\ifzh NDVI 缺失集中于高报告率的山地环境\else NDVI missingness concentrates in high-reporting upland environments\fi}
+\ifzh
+NDVI 可用比例从 María 前的 72.58\% 增至 Fiona 后的 79.40\%。完整记录的正报告率为 4.89\%（3,370/68,976），缺失记录为 8.71\%（1,804/20,706）。不同海拔层的缺失比例存在明显差异（表~\ref{tab:envmissing}；图~\ref{fig:envmissing}）。低、中、高海拔的缺失率分别为 20.8\%、32.8\% 和 49.6\%。高海拔清单占缺失子集的 11.2\%，但仅占完整子集的 3.4\%；与此同时，该层完整记录的报告率达到 37.4\%，远高于低海拔的 3.3\%。因此，缺失子集的较高总体报告率与高报告率山地记录的较大权重密切相关。
+\else
+NDVI availability increased from 72.58\% before Mar\'ia to 79.40\% after Fiona. Reporting was 4.89\% among complete records (3,370/68,976) and 8.71\% among missing records (1,804/20,706). Missingness differed considerably among elevation bands (Table~\ref{tab:envmissing}; Figure~\ref{fig:envmissing}). It was 20.8\%, 32.8\% and 49.6\% in low, middle and high bands. High-elevation checklists formed 11.2\% of missing records but only 3.4\% of complete records. Their complete-record report rate was 37.4\%, compared with 3.3\% at low elevation. High-reporting upland environments consequently receive greater weight in the missing subset.
+\fi
+\inctab{environment_missingness}
+\ifzh
+这种组成解释也得到条件比较支持。缺失指示变量的未校正报告优势比为 1.86（95\% 区间 1.51--2.28），加入海拔与时期后为 1.03（0.85--1.26）；继续控制努力、季节和位置后为 1.20（1.03--1.41）。较大的总体差异因而主要体现环境与时期组成，进一步校正后仍保留较小的观测差异。在高海拔层内，缺失记录报告率实际略低于完整记录（35.7\% 对 37.4\%），说明缺失并不对应所有环境中一致增加的报告机会。对“哪里回升更明显”的判断而言，完整记录减少了高报告率山地环境的权重，而 NDVI 可用比例又随时期变化；原始汇总因而混合了地点报告变化与环境代表性变化。分层并统一协变量分布，有助于提高时期比较的可比性；补充山地缺失记录的环境信息，则有助于检验较高持续性关联能否覆盖当前环境分析遗漏的清单。
+\else
+Conditional comparisons support this compositional explanation. The unadjusted report odds ratio for missing records was 1.86 (95\% interval 1.51--2.28), declining to 1.03 (0.85--1.26) after elevation and period adjustment. Further adjustment for effort, season and location gave 1.20 (1.03--1.41). Much of the aggregate difference therefore reflects environmental and period composition, with a smaller residual observation difference after fuller adjustment. Within the high-elevation band, missing records actually had slightly lower reporting than complete records (35.7\% versus 37.4\%), showing that missingness does not correspond to uniformly greater reporting across environments. For locating rebound, complete records downweight high-reporting uplands while NDVI availability also changes across periods. Raw summaries consequently mix changes in reporting with changes in environmental representation. Stratification and a common covariate distribution improve period comparability; recovering environmental information for missing upland records would help assess whether the higher-persistence association extends to observations omitted from the environmental analysis.
+\fi
+\begin{figure}[htbp]\centering
+\incfig{fig25_environment_missingness}
+\caption{\ifzh
+NDVI 缺失的环境结构。（a）各海拔层缺失比例；（b）层内完整与缺失记录的报告率；（c）逐步校正的报告优势比及空间区块聚类 95\% 区间。
+\else
+Environmental structure of NDVI missingness. Panels show (a) missing fraction by elevation, (b) reporting within each band, and (c) sequentially adjusted odds ratios with spatial block-clustered 95\% intervals.
+\fi}\label{fig:envmissing}
+\end{figure}
+\ifzh
+对占域持续性研究而言，完整记录筛选减少的是山地环境中的清单权重，而不只是均匀减少样本量。占域网格核查显示，三个时期都有记录的 1,048 个网格中只有四个完全没有 NDVI；动态模型仍覆盖 1,044 个网格，且采用地点跨时期平均绿度。缺失数据对清单模型与占域模型的影响有所不同。完整记录筛选改变了清单模型中的山地记录比例，占域模型则更多依赖跨时期平均绿度能否代表各时期的地点条件。监测应保留山地重复访问，同时改善鸟类调查与同期植被观测的匹配，避免把完整清单中的环境权重直接视为全体地点的权重。
+\else
+For persistence research, complete-case filtering reduces the checklist weight of upland environments rather than removing an environmentally uniform sample. Of 1,048 grids represented in all three periods, only four lacked NDVI entirely; the dynamic model retained 1,044 grids using cross-period mean greenness. Missingness affects the checklist and occupancy analyses differently. Complete-case filtering changes upland record representation in the checklist model, whereas the occupancy model depends on how well cross-period mean vegetation represents conditions in each period. Monitoring should retain repeated upland visits and improve matching to contemporaneous vegetation observations, rather than treating complete-checklist weights as the weights of all sites.
+\fi
+\FloatBarrier

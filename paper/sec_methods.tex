@@ -1,0 +1,66 @@
+\section{Materials and Methods}
+\subsection{Study design, observations and environmental coverage}
+We used the derived data and scripts released by Ortiz-Andrade and Rojas-Perez~\cite{ortiz2026}, together with the existing experiment outputs in this project. The study concerns Puerto Rico and retains complete eBird checklists using Stationary or Traveling protocols, durations of 5--240~min and travel distances no greater than 5~km. The response is one if the species was reported and zero otherwise. Zero denotes a non-report, not verified absence.
+
+Habitat refers to the environment in which a species lives. We characterize selected habitat conditions through elevation and vegetation greenness and examine their associations with checklist records and modeled occupancy states. Habitat use is a broad description of these associations here; foraging, breeding behavior and habitat quality were not measured directly. At the observation level, a repeat report means that a checklist reports the species again at the same site in a later period. It depends on both presence and detection and is reported separately from modeled occupancy persistence.
+
+The analysis covers 1 January 2013 to 31 December 2025. We retain the published period definitions. Pre-Mar\'ia ends on 19 September 2017; Inter-Hurricanes runs from 20 September 2017 to 17 September 2022; and Post-Fiona begins on 18 September 2022. These categories locate observations relative to the storms. They do not measure local storm exposure or supply an undisturbed counterfactual, so their contrasts are temporal associations rather than estimates of hurricane causation.
+
+Elevation derives from SRTM~\cite{farr2007}; NDVI summarizes vegetation greenness~\cite{tucker1979}. The released Landsat procedure selects the nearest valid observation within $\pm16$ days and restricts imagery to the relevant period. We use the released covariates rather than repeating satellite extraction. The full analysis contains \nChecklists{} checklists, of which \nComplete{} have NDVI; \nMissingNDVI{} (\nMissingPct{}\%) do not. Environmental GLMs and the principal conventional benchmark use the complete subset. We describe missingness by period and reporting outcome without assuming it is random. This composition check is motivated by evidence that spatial and temporal sampling biases can interact in community-science trend estimation~\cite{backstrom2025}. The archived EVI2 comparison supplies a secondary vegetation-index check~\cite{jiang2008}.
+
+Figure~\ref{fig:area} places checklist coverage and the validation blocks in the same landscape. Its 24,876 locations refer to the pre-extraction coordinate table; the exported environmental table contains 24,856 coordinate pairs because coordinate precision differs. Neither count is the number of occupancy sites or validation blocks. The sampling locations reflect opportunities for observation rather than a spatially uniform survey.
+\begin{figure}[htbp]\centering
+\incfig[0.94\linewidth]{fig01_study_area_and_spatial_blocks}
+\caption{Puerto Rico, SRTM elevation and checklist coverage (upper panel), with one spatial fold allocation (lower panel). Entire $0.08^\circ$ blocks are assigned to folds; adjacent training and test blocks have no distance buffer.}\label{fig:area}
+\end{figure}
+
+\subsection{Verification and conditional reporting models}
+\label{sec:verify}
+File hashes, sample counts, filtering criteria and fitted coefficients were checked for data and model reproduction. Two duplicated date--coordinate records were retained to preserve the original analysis sample.
+\input{body_provenance.tex}
+
+Five binomial GLMs progress from an intercept through period, observation effort, environment and period--elevation interaction. All use the same NDVI-complete subset. The published selected model is
+\begin{equation}
+\operatorname{logit}(q_i)=\alpha+\beta_{P(i)}+\beta_E E_i+\delta_{P(i)}E_i+\beta_V V_i+\beta_D D_i+\beta_L L_i,
+\label{eq:glm}
+\end{equation}
+where $q_i$ is reporting probability, $E_i$ elevation in 100-m units, $V_i$ NDVI, $D_i$ duration in minutes and $L_i$ distance in kilometres. Pre-Mar\'ia is the reference period. We report existing AIC, model weights and pseudo-$R^2$ as summaries of the candidate fits~\cite{burnham2002,mcfadden1974}, separately from held-out performance.
+
+For the elevation curves, NDVI, duration and distance are fixed at their complete-sample means. Predictions at 100 and 900~m summarize low and high elevations, not biological thresholds. Following the released analysis, we also summarize the curve on a uniform 0--1300~m grid at 10-m intervals:
+\begin{equation}
+C_t=\frac{\sum_h h\widehat q_t(h)}{\sum_h\widehat q_t(h)}.
+\end{equation}
+This probability-weighted elevation centroid describes a fitted curve, not population abundance, geographic range centre or tracked movement. Annual reporting intervals reproduce the archived binomial intervals and do not account for observer or geographic dependence.
+
+\subsection{Occupancy persistence and observation-model correction}
+\label{sec:ordering}
+The dynamic model uses $0.01^\circ$ rounded-coordinate cells as sites and the three periods as primary occasions. Sites require a checklist in every period. Within each site--period, the first three records after ordering by year and original row order are retained, with fewer visits represented by missing cells. The resulting \nOccSites{}-by-nine detection history contains \nOccasions{} observed occasions and \nOccMissing{} missing positions. Site covariates are computed from all eligible records before visit selection and standardized across retained sites. NDVI is therefore a cross-time site summary, not a within-site vegetation-recovery trajectory.
+
+The selected \texttt{unmarked} model~\cite{fiske2011} relates initial occupancy ($\psi$) and local extinction ($\varepsilon$) to elevation and NDVI, colonization ($\gamma$) to NDVI, and detection ($p$) to period. Period does not separately enter the transition components. Thus the model does not estimate a storm-specific change in extinction or colonization.
+
+Let $z_{g,t}$ denote the latent occupancy state of grid $g$ in primary period $t$. Occupancy persistence probability is defined as $\Pr(z_{g,t+1}=1\mid z_{g,t}=1)=1-\varepsilon_g$, the probability that a previously occupied grid remains occupied in the next period~\cite{mackenzie2003}. It does not represent residence of the same individual, individual survival or uninterrupted presence throughout a period. Colonization probability $\gamma$ conditions on prior nonoccupancy, whereas an observed first or repeat report does not directly identify colonization. Persistence throughout this paper refers to this grid-level state transition.
+
+The observation covariate must align with the detection matrix in site-major order. All nine observations from one site precede those of the next. The released script instead repeats each occasion label across sites. The archived labelled-frame check and controlled refit change only this alignment, keeping the response, site covariates, formula and optimization settings fixed. We compare estimates and uncertainty, using $\widehat\beta\pm1.96\,\mathrm{SE}$ for approximate 95\% Wald intervals. This is a sensitivity test within the selected model, not a new selection across all corrected candidate models. Multi-year primary periods also place substantial demands on within-period closure; estimated transitions are not annual demographic rates.
+
+\subsection{Reporting prediction in held-out geographic blocks}
+\label{sec:protocols}
+The prediction target remains a checklist report. The eleven conventional configurations are GLM m3, GLM m4, a spline GLM, m4 with terrain, random forest, LightGBM, XGBoost, a multilayer perceptron (MLP), and terrain-augmented variants of the last three. Tree methods provide flexible tabular predictors~\cite{breiman2001,ke2017,chen2016}. Their features include environment, effort, period, seasonal terms and coordinates; the published GLMs retain their original covariates. Terrain configurations add 20 SRTM descriptors of elevation, slope, aspect and neighbourhood variation at four scales. Consequently, comparisons concern implemented model--information combinations, not isolated architecture effects.
+
+The saved settings use 400 trees and a minimum leaf size of five for random forest; the boosting implementations use 600 estimators and learning rate 0.05, with 63 leaves for LightGBM and maximum depth six for XGBoost. The MLP has three hidden layers of width 128. Estimated transformations, including MLP scaling and spline knots, are fitted using each training fold. These settings describe the existing runs; we do not retune against the reported tests.
+
+The primary protocol assigns entire $0.08^\circ$ geographic blocks, approximately 8--9~km per side, to ten size-balanced folds, repeated with three block origins. The eleven configurations share all 30 test folds. Each fold can contain disconnected blocks; no buffer separates adjoining training and test blocks. The protocol tests the specified within-island geographic holdout, not arbitrary-distance extrapolation. Secondary random validation uses three stratified five-fold repetitions. Training fractions and test composition follow the respective partition rules. The archived temporal experiment repeats fits on the same Post-Fiona test sample with three seeds; it evaluates transfer of relationships learned in earlier periods to later reports. Separate geographic and temporal holdouts follow the principle that validation should represent the intended transfer task~\cite{spacetime2025}.
+
+We emphasize AUC, average precision (AP), Brier score and recall among the highest-ranked 10\% of test checklists~\cite{saito2015,brier1950}. They address overall discrimination, positive-report ranking, probability error and a fixed ranking budget, respectively. Comparisons use unweighted fold means and between-fold standard deviations, absolute differences, relative improvements and top-decile report coverage. Training sets overlap across repeated partitions, so folds are not treated as independent replicates for significance classification. The pooled curves use a separate ten-fold prediction export. ROC and precision--recall characterize ranking, while reliability diagrams use 12 equal-count bins and expected calibration error uses 15. Scale sensitivity evaluates $0.04^\circ$, $0.08^\circ$, $0.16^\circ$ and $0.32^\circ$ blocks; the EVI2 substitution uses six folds.
+
+\input{env_methods.tex}
+
+Figure~\ref{fig:arch} summarizes how the environmental and survey data support complementary analyses of conditional reporting, occupancy persistence and reporting prediction, and how these analyses inform follow-up monitoring across elevation and greenness conditions.
+\input{body_architecture.tex}
+\FloatBarrier
+
+\subsection{Neural prediction structure and training-source diagnostics}
+\label{sec:audit}
+The archived HERON workflow factorizes a reporting score into two bounded branch scores, $q_i=s_i d_i$, and combines it with conventional models. We reconstruct the archived fold assignments and match sampling-event identifiers between the complete and all-record tables. The original workflow partitions these tables independently but treats equal fold numbers as equal held-out records. We assess overlap with the neural training source before interpreting its performance; internal stacking uses an analogous independent allocation. The diagnostic calculates overlap from the original allocation rules and observation identifiers.
+
+Separately, the grouped loss uses $1-\prod_i(1-s_i d_i)$, which depends only on the products. It therefore does not by itself identify either branch as occupancy or detection. For a shared site state, an occupancy model instead has $\Pr(\hbox{at least one report})=\psi_g[1-\prod_j(1-p_{gj})]$. Input restrictions and monotone effort curves do not establish equivalence to this shared-state likelihood. Accordingly, neural environmental and effort branches are interpreted as fitted scores, while occupancy persistence is evaluated through the dynamic occupancy transitions. Neural-component ablations use 20 folds, stack ablations use six, and the direct configuration comparison uses ten; contrasts are analyzed within their respective fold sets.
+

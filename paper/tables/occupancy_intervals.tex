@@ -1,0 +1,16 @@
+\begin{table}[htbp]\centering\small
+\caption{\ifzh 校正后的动态占域系数。环境变量在保留地点间标准化，探测时期以两次飓风之间为参照。区间为近似 95\% Wald 区间。\else Corrected dynamic occupancy coefficients. Environmental predictors are standardized across retained sites. Detection contrasts use Inter-Hurricanes as reference. Intervals are approximate 95\% Wald intervals.\fi}\label{tab:occintervals}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}\toprule
+Parameter & Estimate & SE & 95\% interval & $p$ \\
+\midrule
+Initial occupancy: elevation & 1.647 & 0.268 & [1.122, 2.171] & $<0.001$ \\
+Initial occupancy: NDVI & 0.583 & 0.179 & [0.231, 0.934] & 0.001 \\
+Colonization: NDVI & 0.057 & 0.171 & [-0.278, 0.392] & 0.740 \\
+Local extinction: elevation & -0.720 & 0.238 & [-1.187, -0.252] & 0.003 \\
+Local extinction: NDVI & -0.818 & 0.313 & [-1.431, -0.206] & 0.009 \\
+Detection: Pre-Maria & -0.055 & 0.159 & [-0.366, 0.256] & 0.727 \\
+Detection: Post-Fiona & 0.107 & 0.149 & [-0.185, 0.398] & 0.474 \\
+\bottomrule\end{tabular}
+\end{adjustbox}
+\end{table}

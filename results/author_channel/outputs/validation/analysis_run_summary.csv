@@ -1,0 +1,11 @@
+metric,value
+Analysis start,2026-09-26 11:18:53 CEST
+Analysis end,2026-09-26 11:20:00 CEST
+Elapsed minutes,1.13
+Input file,/home/snakehand/Documents/mdpi_papers/Birds/results/author_channel/data/Riccordia_maugaeus_eBird_NDVI_corrected_nearest.csv
+Input rows after 2013-2025 filtering,89682
+Complete corrected-NDVI GLM rows,68976
+Dynamic occupancy sites,1044
+Best GLM,Final
+Best GLM AIC,21373.3114400446
+Best dynamic model AIC,2878.80848383803

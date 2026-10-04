@@ -1,0 +1,13 @@
+# Import-based dependency list; original training versions were not recovered.
+numpy
+pandas
+scipy
+statsmodels
+patsy
+scikit-learn
+lightgbm
+xgboost
+torch
+rasterio
+matplotlib
+python-docx

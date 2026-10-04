@@ -1,0 +1,13 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{\ifzh 环境分层的预测与监测覆盖。两种排序各选择 6,890 条清单；Global 为每折总体前 10\%，Stratified 为每折各海拔层约 10\%。\else Environment-stratified prediction and monitoring coverage. Both policies select 6,890 checklists: Global ranks the top 10\% within each fold, and Stratified allocates approximately 10\% within each elevation band and fold.\fi}\label{tab:envmonitor}
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{llrrrrrr}\toprule
+Elevation & Model & Reports & AP & Brier & Global selected \% & Global recall \% & Stratified recall \% \\ \midrule
+Low & GLM m4 & 2046 & 0.143 & 0.0299 & 6.1 & 26.4 & 38.2 \\
+Low & RF & 2046 & 0.201 & 0.0289 & 6.9 & 34.6 & 45.6 \\
+Mid & GLM m4 & 447 & 0.221 & 0.0974 & 38.0 & 53.5 & 19.5 \\
+Mid & RF & 447 & 0.326 & 0.0868 & 29.7 & 52.3 & 26.2 \\
+High & GLM m4 & 877 & 0.540 & 0.2168 & 66.6 & 78.3 & 16.4 \\
+High & RF & 877 & 0.538 & 0.2154 & 57.9 & 72.3 & 15.7 \\
+\bottomrule\end{tabular}\end{adjustbox}
+
+\end{table}

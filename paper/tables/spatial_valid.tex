@@ -1,0 +1,20 @@
+\begin{table}[htbp]\centering\small
+\caption{\ifzh 常规模型在相同 30 个空间测试折上的表现。数值为不加权均值 $\pm$ 折间标准差，标准差不是置信区间；模型输入信息并不完全相同。\else Conventional models on the same 30 spatial test folds. Entries are unweighted means $\pm$ between-fold SD; SD is not a confidence interval. Models use different feature sets.\fi}\label{tab:spatialvalid}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}\toprule
+Model & AUC & AP & Brier & Top-10\% recall \\
+\midrule
+GLM-m4 & 0.800 $\pm$ 0.071 & 0.253 $\pm$ 0.124 & 0.0401 $\pm$ 0.0183 & 0.461 $\pm$ 0.124 \\
+GLM-m3 & 0.801 $\pm$ 0.071 & 0.254 $\pm$ 0.124 & 0.0401 $\pm$ 0.0183 & 0.462 $\pm$ 0.125 \\
+GLM-splines & 0.812 $\pm$ 0.070 & 0.260 $\pm$ 0.120 & 0.0397 $\pm$ 0.0176 & 0.493 $\pm$ 0.140 \\
+GLM-m4 + terrain & 0.822 $\pm$ 0.065 & 0.255 $\pm$ 0.114 & 0.0403 $\pm$ 0.0190 & 0.489 $\pm$ 0.130 \\
+Random forest & 0.842 $\pm$ 0.055 & 0.286 $\pm$ 0.120 & 0.0384 $\pm$ 0.0173 & 0.534 $\pm$ 0.129 \\
+LightGBM & 0.839 $\pm$ 0.051 & 0.262 $\pm$ 0.117 & 0.0397 $\pm$ 0.0185 & 0.506 $\pm$ 0.140 \\
+LightGBM + terrain & 0.846 $\pm$ 0.050 & 0.270 $\pm$ 0.111 & 0.0396 $\pm$ 0.0189 & 0.513 $\pm$ 0.133 \\
+XGBoost & 0.840 $\pm$ 0.051 & 0.269 $\pm$ 0.119 & 0.0392 $\pm$ 0.0181 & 0.517 $\pm$ 0.137 \\
+XGBoost + terrain & 0.844 $\pm$ 0.051 & 0.273 $\pm$ 0.115 & 0.0389 $\pm$ 0.0182 & 0.511 $\pm$ 0.130 \\
+MLP & 0.777 $\pm$ 0.065 & 0.188 $\pm$ 0.102 & 0.0494 $\pm$ 0.0222 & 0.418 $\pm$ 0.130 \\
+MLP + terrain & 0.748 $\pm$ 0.068 & 0.168 $\pm$ 0.094 & 0.0564 $\pm$ 0.0297 & 0.386 $\pm$ 0.107 \\
+\bottomrule\end{tabular}
+\end{adjustbox}
+\end{table}

@@ -1,0 +1,23 @@
+\subsection{Reporting prediction retains value under geographic holdout}
+All eleven conventional configurations were evaluated on the same 30 spatial test folds (Table~\ref{tab:spatialvalid}). The published GLM m4 had mean AUC 0.800, AP 0.253 and Brier score 0.0401. Terrain-augmented LightGBM had the highest mean AUC, 0.846. Random forest had the highest mean AP, 0.286, and lowest mean Brier score, 0.0384. Its top-ranked 10\% of test checklists contained 53.4\% of positive reports, compared with 46.1\% for m4. Relative to m4, random forest increased AP by approximately 13.1\%, reduced Brier by approximately 4.3\% and increased top-decile recall by 7.3 percentage points. At the same checklist-screening fraction, more positive reports entered the priority set, demonstrating its value for ranking monitoring records. Model rankings can identify reported locations worth revisiting, after which repeated surveys and detection models can compare occupancy persistence probabilities across elevation and greenness conditions. The following stratified analysis examines which environments benefit from improved report identification.
+\inctab{spatial_valid}
+\begin{figure}[htbp]\centering
+\incfig{fig22_conventional_spatial_rewrite}
+\caption{Conventional reporting models on 30 shared geographic test folds. Points are fold means and bars are between-fold SD, not confidence intervals. Dashed lines mark m4. The best mean overall discrimination, positive-report ranking and probability error are not all supplied by the same configuration.}\label{fig:validbench}
+\end{figure}
+
+The changes were selective (Figure~\ref{fig:validbench}). Adding terrain to m4 increased AUC from 0.800 to 0.822, while AP changed only from 0.253 to 0.255 and Brier error increased slightly. Terrain improved the boosting configurations but reduced the MLP's performance. The additive m3 and interaction m4 GLMs had almost identical spatial results despite the latter's better sample-fit AIC. Thus an environmental term can help describe the sampled pattern without providing a corresponding improvement in held-out report prediction. Different feature sets also prevent attributing tree-model gains solely to model architecture. For monitoring, terrain inputs should be judged by whether they improve positive-report coverage in target environments. Higher AUC with nearly unchanged AP indicates that stronger overall discrimination need not supply more useful revisit clues under limited screening capacity. Similar m3 and m4 performance also shows that an interaction describing rebound gradients need not improve site prioritization.
+
+\input{env_monitor_results.tex}
+
+\subsection{Spatial validation defines the geographic scope of revisit guidance}
+Random validation yielded larger average performance values for the illustrated conventional configurations (Figure~\ref{fig:protocolvalid}). Random forest's AUC/AP were 0.910/0.442 under random splitting and 0.842/0.286 under spatial blocking; m4 changed from 0.820/0.299 to 0.800/0.253. The flexible model's advantage was therefore smaller in the geographic holdout. Random forest's AP advantage narrowed from 0.143 under random splitting to 0.033 under spatial splitting. This contraction weakens the basis for exporting high random-validation scores to new locations. Together with the preceding lowland analysis, the remaining spatial-holdout gains support using models to identify revisit candidates within the observed environmental domain. However, aggregate spatial performance does not establish equal gains in every lowland greenness cell. Site selection should preserve elevation and greenness coverage before applying a ranking tool assessed under geographic holdout, so that easily predicted locations do not replace the environmental contrasts needed to estimate occupancy persistence. Training fractions and sample composition also differ between protocols; the entire score decline cannot be attributed to geographic distance.
+\begin{figure}[htbp]\centering
+\incfig{fig23_protocols_rewrite}
+\caption{Conventional-model means under random and spatial validation. Random validation has 15 evaluations and spatial validation 30. Lines connect protocol summaries, not paired treatment effects. The protocols differ in training fraction as well as geographic composition.}\label{fig:protocolvalid}
+\end{figure}
+
+\FloatBarrier
+\input{body_validation.tex}
+\input{body_neural.tex}
+\input{body_responses.tex}

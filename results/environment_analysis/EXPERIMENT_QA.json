@@ -1,0 +1,10 @@
+{
+  "checklist_totals_verified": true,
+  "all_oof_predictions_complete": true,
+  "identifiers_unique": true,
+  "spatial_training_separation_verified": true,
+  "equal_budgets_every_fold_and_model": true,
+  "occupancy_refit_reproduced": true,
+  "new_figures": 4,
+  "new_tables": 4
+}

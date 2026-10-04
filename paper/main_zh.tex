@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref,xcolor,caption,float,longtable,multirow,adjustbox,placeins,array}
+\usepackage[numbers,sort&compress]{natbib}
+\newif\ifzh
+\zhtrue
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\refname}{参考文献}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\emergencystretch}{3em}
+\setlength{\tabcolsep}{4pt}
+\setlength{\textfloatsep}{15pt plus 3pt minus 3pt}
+\renewcommand{\arraystretch}{1.12}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.72}
+\setcounter{topnumber}{4}
+\setcounter{totalnumber}{6}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{14pt plus 2pt minus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+\raggedbottom
+\graphicspath{{../figures/}}
+\input{numbers.tex}
+\input{numbers_rewrite.tex}
+\newcommand{\HR}{HERON}
+\newcommand{\Rm}{\textit{Riccordia maugaeus}}
+\newcommand{\inctab}[1]{\input{tables/#1.tex}}
+\newcommand{\incfig}[2][\linewidth]{\includegraphics[width=#1,height=0.68\textheight,keepaspectratio]{#2.pdf}}
+\title{波多黎各绿蜂鸟飓风后生境利用的海拔与植被绿度差异及监测启示}
+\author{草稿：作者姓名与单位待补充}
+\date{2026 年 10 月 1 日}
+\begin{document}
+\maketitle
+\noindent\textbf{通俗摘要。}飓风后鸟类记录增加，是否意味着原有地点在后续时期仍有该物种存在？本研究结合调查记录与占域模型分析这一问题。山地较绿环境的报告水平较高，模型估计的占域持续概率也较高；低地记录较少，但较绿网格仍具有较高的占域持续概率。这个概率描述网格在相邻时期的占域状态，不表示同一只鸟一直留在那里。预测模型主要帮助寻找低、中海拔容易遗漏的报告。监测应同时保留山地固定复访点和不同绿度的低地地点，记录鸟类是否再次出现，并结合探测模型估计占域状态的转移。\par\medskip
+\begin{abstract}\input{zh_abstract.tex}\end{abstract}
+\noindent\textbf{关键词：} 波多黎各绿蜂鸟；飓风相关变化；eBird；植被绿度；占域持续性；动态占域；空间验证；重分析
+\input{zh_intro.tex}
+\input{zh_methods.tex}
+\input{zh_results.tex}
+\input{zh_discussion.tex}
+\clearpage
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+\end{document}

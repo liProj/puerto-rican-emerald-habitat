@@ -1,0 +1,62 @@
+\begin{longtable}{p{7.4cm}rrc}
+\caption{\ifzh 全部 54 项原数据校验，包含日期--坐标重复例外。VT 表示公开验证目标；完整导出表与 2013--2025 分析记录具有不同分母。\else All 54 archived dataset checks, including the date--coordinate duplicate exception. VT denotes the released validation targets. Full-export counts and 2013--2025 analysis counts have different denominators.\fi}\label{tab:verify}\\
+\toprule
+Check & Reported & Recomputed & Match \\ \midrule
+\endfirsthead
+\toprule Check & Reported & Recomputed & Match \\ \midrule \endhead
+{}[VT] Filtered pre-GEE table: total rows & 91677 & 91677 & yes \\
+{}[VT] Filtered pre-GEE table: rows 2013-2025 & 89682 & 89682 & yes \\
+{}[VT] Filtered pre-GEE table: detections (full) & 5326 & 5326 & yes \\
+{}[VT] Filtered pre-GEE table: non-detections (full) & 86351 & 86351 & yes \\
+{}[VT] Corrected NDVI export: total rows & 91677 & 91677 & yes \\
+{}[VT] Corrected NDVI export: rows 2013-2025 & 89682 & 89682 & yes \\
+{}[VT] Corrected NDVI export: detections (full) & 5326 & 5326 & yes \\
+{}[VT] Corrected NDVI export: non-detections (full) & 86351 & 86351 & yes \\
+{}[VT] Corrected NDVI export: non-missing index (full) & 70799 & 70799 & yes \\
+{}[VT] EVI2 export: total rows & 91677 & 91677 & yes \\
+{}[VT] EVI2 export: rows 2013-2025 & 89682 & 89682 & yes \\
+{}[VT] EVI2 export: detections (full) & 5326 & 5326 & yes \\
+{}[VT] EVI2 export: non-detections (full) & 86351 & 86351 & yes \\
+{}[VT] EVI2 export: non-missing index (full) & 70799 & 70799 & yes \\
+paper 3.1: checklists analysed 2013-2025 & 89682 & 89682 & yes \\
+paper 3.1: checklists reporting species & 5174 & 5174 & yes \\
+paper 3.1: checklists not reporting & 84508 & 84508 & yes \\
+paper 3.1: overall encounter frequency (\%) & 5.77 & 5.77 & yes \\
+Table 1 Pre-Maria: total checklists & 14728 & 14728 & yes \\
+Table 1 Pre-Maria: reporting species & 1118 & 1118 & yes \\
+Table 1 Pre-Maria: encounter frequency (\%) & 7.59 & 7.59 & yes \\
+Table 1 Inter-Hurricanes: total checklists & 37701 & 37701 & yes \\
+Table 1 Inter-Hurricanes: reporting species & 1742 & 1742 & yes \\
+Table 1 Inter-Hurricanes: encounter frequency (\%) & 4.62 & 4.62 & yes \\
+Table 1 Post-Fiona: total checklists & 37253 & 37253 & yes \\
+Table 1 Post-Fiona: reporting species & 2314 & 2314 & yes \\
+Table 1 Post-Fiona: encounter frequency (\%) & 6.21 & 6.21 & yes \\
+paper 3.1: Pre-Maria share (\%) & 16.4 & 16.4 & yes \\
+paper 3.1: Inter-Hurricanes share (\%) & 42.0 & 42.0 & yes \\
+paper 3.1: Post-Fiona share (\%) & 41.5 & 41.5 & yes \\
+paper 3.1: checklists with missing NDVI & 20706 & 20706 & yes \\
+paper 3.1: missing-NDVI share (\%) & 23.1 & 23.1 & yes \\
+paper 2.4.2/3.1: NDVI-complete analytical subset & 68976 & 68976 & yes \\
+EVI2 subset size (parity with NDVI) & 68976 & 68976 & yes \\
+paper 2.1/Fig1: unique sampling locations & 24876 & 24876 & yes \\
+paper 2.1/Fig1: unique locations with >=1 report & 1900 & 1900 & yes \\
+integrity: unique sampling-event IDs == rows (full) & 91677 & 91677 & yes \\
+integrity: fully duplicated rows (full) & 0 & 0 & yes \\
+integrity: duplicated (date,lon,lat) triples & 0 & 2 & \textbf{no} \\
+integrity: missing values in core covariates & 0 & 0 & yes \\
+integrity: Presence coded {0,1} only & True & True & yes \\
+integrity: Duration within 5-240 min filter & True & True & yes \\
+integrity: Distance <= 5 km filter & True & True & yes \\
+integrity: Elevation\_m >= 0 (negatives set to 0) & True & True & yes \\
+integrity: NDVI within [-1,1] & True & True & yes \\
+integrity: |Days\_from\_eBird| < 17 (fractional days) & True & True & yes \\
+integrity: NDVI/EVI2 exports row-aligned on IDs & True & True & yes \\
+paper 2.7: initially eligible sites (>=1 checklist per period) & 1048 & 1048 & yes \\
+paper 2.7: sites dropped for no valid NDVI & 4 & 4 & yes \\
+paper 2.7: final occupancy sites & 1044 & 1044 & yes \\
+paper 2.7: observed survey occasions & 7908 & 7908 & yes \\
+paper 2.7: missing occasions in 1044x9 matrix & 1488 & 1488 & yes \\
+paper 3.5: Inter-Hurricanes time-since-Maria N & 28707 & 28707 & yes \\
+paper 3.5: Post-Fiona time-since-Fiona N & 29580 & 29580 & yes \\
+\bottomrule
+\end{longtable}

@@ -1,0 +1,36 @@
+
+Call:
+unmarked::colext(psiformula = ~Elevation + NDVI, gammaformula = ~NDVI, 
+    epsilonformula = ~Elevation + NDVI, pformula = ~Period, data = dynamic_corrected_umf, 
+    method = "BFGS", se = TRUE, control = list(maxit = 10000, 
+        trace = 0))
+
+Initial (logit-scale):
+            Estimate    SE     z                   P(>|z|)
+(Intercept)   -1.637 0.171 -9.57 0.00000000000000000000107
+Elevation      1.544 0.238  6.49 0.00000000008618977654274
+NDVI           0.613 0.177  3.47 0.00052190176606192663789
+
+Colonization (logit-scale):
+            Estimate    SE       z
+(Intercept)  -2.7014 0.172 -15.681
+NDVI          0.0737 0.170   0.432
+                                                                P(>|z|)
+(Intercept) 0.000000000000000000000000000000000000000000000000000000205
+NDVI        0.665487072715728711358451619162224233150482177734375000000
+
+Extinction (logit-scale):
+            Estimate    SE      z P(>|z|)
+(Intercept)   -0.177 0.306 -0.577  0.5637
+Elevation     -0.830 0.296 -2.801  0.0051
+NDVI          -0.840 0.337 -2.492  0.0127
+
+Detection (logit-scale):
+                 Estimate    SE      z        P(>|z|)
+(Intercept)        -0.736 0.119 -6.181 0.000000000637
+PeriodPost-Fiona    0.120 0.146  0.822 0.411271796769
+PeriodPre-Maria    -0.566 0.190 -2.973 0.002948571240
+
+AIC: 2878.808 
+Number of sites: 1044
+

@@ -1,0 +1,16 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{\ifzh 环境分层的占域持续概率、定殖概率与再次记录。占域持续概率以网格在前一时期已被占据为条件；区间来自 2,000 次联合参数模拟。\else Occupancy persistence, colonization, and repeated reports by environment. Occupancy persistence is conditional on the grid being occupied in the previous period; intervals use 2,000 joint parameter draws.\fi}\label{tab:envpersistence}
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{llrrr}\toprule
+Elevation/NDVI & Grids & Persistence \% [95\% CI] & Colonization \% [95\% CI] & Repeated reports \\ \midrule
+Low/Low & 320 & 24.2 [11.0, 46.4] & 5.3 [3.6, 7.9] & 1/9 \\
+Low/Mid & 430 & 49.7 [35.8, 63.2] & 5.7 [4.1, 8.1] & 14/46 \\
+Low/High & 158 & 71.3 [53.4, 83.9] & 6.0 [3.4, 10.4] & 15/28 \\
+Mid/Low$\dagger$ & 5 & 61.8 [33.4, 83.6] & 5.4 [3.9, 7.5] & 0/1 \\
+Mid/Mid & 24 & 79.9 [65.0, 89.2] & 5.8 [4.0, 8.4] & 3/4 \\
+Mid/High & 48 & 89.3 [79.3, 94.6] & 6.1 [3.3, 10.9] & 17/27 \\
+High/Low$\dagger$ & 2 & 77.8 [31.5, 95.3] & 5.3 [3.5, 7.9] & 0/0 \\
+High/Mid & 18 & 94.2 [79.6, 98.4] & 5.8 [3.9, 8.7] & 11/14 \\
+High/High & 39 & 96.8 [88.7, 99.0] & 6.1 [3.3, 10.9] & 22/32 \\
+\bottomrule\end{tabular}\end{adjustbox}
+\par\smallskip\ifzh $\dagger$ 少于十个网格。再次记录计数仅使用相邻两个时期各有三次访问的网格--时期对，分母为前一时期记录到该物种的网格--时期对数。\else $\dagger$ Fewer than ten grids. Repeated reports use grid--period pairs with three visits in each adjacent period; the denominator counts pairs with a report in the previous period.\fi
+\end{table}

@@ -1,0 +1,9 @@
+{
+  "checklists": 89682,
+  "reports": 5174,
+  "ndvi_available": 68976,
+  "blocks": 214,
+  "three_period_grids": 1048,
+  "three_period_grids_without_ndvi": 4,
+  "reporting_glm_AIC": 21373.31144004455
+}

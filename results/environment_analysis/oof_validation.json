@@ -1,0 +1,8 @@
+{
+  "n": 68976,
+  "unique_ids": true,
+  "saved_y_and_fold_match": true,
+  "recomputed_glm_fold0_max_error": 9.974659986866641e-17,
+  "rf_disjoint_ids_and_blocks_all_folds": true,
+  "data_sha256": "8202f789d077f0af04d68e38ca5067e558bf000a545fa46fe5b0462926c5731d"
+}

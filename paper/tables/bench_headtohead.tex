@@ -1,0 +1,17 @@
+\begin{table}[htbp]\centering\footnotesize
+\caption{\ifzh
+十折直接配置比较。神经训练来源的跨表重叠按第~\ref{sec:neuraldiagnostic}节解释。
+\else
+Ten-fold direct configuration comparison. Cross-table neural training-source overlap is analyzed in Section~\ref{sec:neuraldiagnostic}.
+\fi}\label{tab:bench_headtohead}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrrr}\toprule
+Method & AUC & AP & pseudo-$R^2$ & Tjur $R^2$ & Brier & LogLoss & ECE & Recall at 10pct \\
+& $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\downarrow$ & $\downarrow$ & $\downarrow$ & $\uparrow$ \\ \midrule
+GLM-m4 (published)\,$\ddagger$ & 0.7920 & 0.2337 & 0.1783 & 0.1092 & 0.0401 & 0.1576 & 0.0209 & 0.4361 \\
+HERON & 0.8406 & 0.2686 & 0.2451 & 0.1331 & 0.0383 & 0.1451 & 0.0183 & 0.4897 \\
+\textbf{HERON-plus} & 0.8831 & 0.3624 & 0.3202 & 0.1902 & 0.0351 & 0.1306 & 0.0175 & 0.5948 \\
+\bottomrule\end{tabular}
+\end{adjustbox}
+\\[2pt]\footnotesize $\ddagger$ the model published by \cite{ortiz2026}.
+\end{table}

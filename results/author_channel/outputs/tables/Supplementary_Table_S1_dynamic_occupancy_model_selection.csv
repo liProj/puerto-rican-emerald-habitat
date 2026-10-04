@@ -1,0 +1,5 @@
+model_description,K,AIC,delta_AIC,Akaike_weight
+psi ~ Elevation + NDVI; gamma ~ NDVI; epsilon ~ Elevation + NDVI; p ~ Period,11,2878.808483838033,0,0.9990229112933986
+psi ~ Elevation + NDVI; gamma ~ NDVI; epsilon ~ NDVI; p ~ Period,10,2892.668394935614,13.859911097580607,9.770887066015224e-4
+psi ~ Elevation zone; gamma ~ 1; epsilon ~ 1; p ~ Period,7,2985.4883170613884,106.67983322335522,6.828793793479287e-24
+psi ~ 1; gamma ~ 1; epsilon ~ 1; p ~ 1,4,3215.2243327375318,336.41584889949854,8.86751736059148e-74

@@ -1,0 +1,45 @@
+quantity,paper,reproduced,match
+Table 1 Pre-Maria N,14728.0,14728.0,True
+Table 1 Pre-Maria n,1118.0,1118.0,True
+Table 1 Pre-Maria %,7.59,7.59,True
+Table 1 Inter-Hurricanes N,37701.0,37701.0,True
+Table 1 Inter-Hurricanes n,1742.0,1742.0,True
+Table 1 Inter-Hurricanes %,4.62,4.62,True
+Table 1 Post-Fiona N,37253.0,37253.0,True
+Table 1 Post-Fiona n,2314.0,2314.0,True
+Table 1 Post-Fiona %,6.21,6.21,True
+Table 1 Total dataset N,89682.0,89682.0,True
+Table 1 Total dataset n,5174.0,5174.0,True
+Table 1 Total dataset %,5.77,5.77,True
+Sec 2.6 analytical subset N,68976.0,68976.0,True
+Sec 3.3 best model AIC (m4),21373.31,21373.31144,True
+Sec 3.3 m4 Akaike weight,0.776,0.776234,True
+Sec 3.3 m3 dAIC,2.49,2.487709,True
+Sec 3.3 m3 Akaike weight,0.224,0.223766,True
+Sec 3.3 m4 McFadden pseudo-R2,0.207,0.206701,True
+"Sec 3.3 odds change per 100 m, Pre-Maria (%)",43.0,42.959557,True
+"Sec 3.3 odds change per 100 m, Inter-Hurricanes (%)",48.3,48.333642,True
+"Sec 3.3 odds change per 100 m, Post-Fiona (%)",50.0,50.020344,True
+"Sec 3.4 predicted reporting prob, Pre-Maria @100 m (%)",3.77,3.766384,True
+"Sec 3.4 predicted reporting prob, Pre-Maria @900 m (%)",40.58,40.57578,True
+"Sec 3.4 predicted reporting prob, Inter-Hurricanes @100 m (%)",2.4,2.396206,True
+"Sec 3.4 predicted reporting prob, Inter-Hurricanes @900 m (%)",36.52,36.524317,True
+"Sec 3.4 predicted reporting prob, Post-Fiona @100 m (%)",3.08,3.07666,True
+"Sec 3.4 predicted reporting prob, Post-Fiona @900 m (%)",44.89,44.886195,True
+"Fig. 4 centroid shift, Inter-Hurricanes (m)",28.5,28.534108,True
+"Fig. 4 centroid shift, Post-Fiona (m)",13.9,13.875867,True
+Sec 3.5 Inter-Hurricanes N,28707.0,28707.0,True
+Sec 3.5 Inter-Hurricanes AIC interaction,7716.0,7716.364079,True
+Sec 3.5 Inter-Hurricanes AIC additive,7724.0,7724.346858,True
+Sec 3.5 Inter-Hurricanes dAIC,7.98,7.982779,True
+Sec 3.5 Inter-Hurricanes interaction beta,0.0265,0.026498,True
+Sec 3.5 Inter-Hurricanes interaction SE,0.00839,0.008385,True
+Sec 3.5 Inter-Hurricanes interaction p,0.0016,0.001577,True
+Sec 3.5 Post-Fiona N,29580.0,29580.0,True
+Sec 3.5 Post-Fiona AIC additive,9497.0,9496.816298,True
+Sec 3.5 Post-Fiona AIC interaction,9498.0,9497.833222,True
+Sec 3.5 Post-Fiona additive beta(yrs),0.0457,0.045664,True
+Sec 3.5 Post-Fiona additive SE(yrs),0.0294,0.029438,True
+Sec 3.5 Post-Fiona additive p(yrs),0.121,0.120857,True
+Sec 3.7 EVI2 checklist AIC,21462.08,21462.07551,True
+Sec 3.7 checklist dAIC NDVI vs EVI2,88.76,88.76407,True

@@ -1,0 +1,46 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref,xcolor,caption,float,longtable,multirow,adjustbox,placeins,array}
+\usepackage[numbers,sort&compress]{natbib}
+\newif\ifzh
+\zhfalse
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\emergencystretch}{3em}
+\setlength{\tabcolsep}{4pt}
+\setlength{\textfloatsep}{15pt plus 3pt minus 3pt}
+\renewcommand{\arraystretch}{1.12}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.72}
+\setcounter{topnumber}{4}
+\setcounter{totalnumber}{6}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{14pt plus 2pt minus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+\raggedbottom
+\graphicspath{{../figures/}}
+\input{numbers.tex}
+\input{numbers_rewrite.tex}
+\newcommand{\HR}{HERON}
+\newcommand{\Rm}{\textit{Riccordia maugaeus}}
+\newcommand{\inctab}[1]{\input{tables/#1.tex}}
+\newcommand{\incfig}[2][\linewidth]{\includegraphics[width=#1,height=0.68\textheight,keepaspectratio]{#2.pdf}}
+\title{Post-Hurricane Habitat Use of the Puerto Rican Emerald along Elevation and Vegetation Greenness Gradients and Implications for Monitoring}
+\author{Draft manuscript; author names and affiliations to be supplied}
+\date{1 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}\input{abstract.tex}\end{abstract}
+\noindent\textbf{Keywords:} Puerto Rican Emerald; hurricane-related change; eBird; vegetation greenness; occupancy persistence; dynamic occupancy; spatial validation; reanalysis
+\input{sec_intro.tex}
+\input{sec_methods.tex}
+\input{sec_results.tex}
+\input{sec_discussion.tex}
+\clearpage
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+\end{document}
